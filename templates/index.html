@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InnovateHive</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <nav class="navbar">
+        <div class="logo-container">
+          <div class="logo animate-slide-in-left">
+            <img
+              src="{{ url_for('static', filename='img/LOGO_1.png') }}"
+              alt="InnovateHive Logo"
+            />
+          </div>
+          <h1 class="animate-slide-in-left">InnovateHive</h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" class="animate-slide-in-left">Home</a></li>
+          <li><a href="#about" class="animate-slide-in-left">About</a></li>
+          <li>
+            <a href="#services" class="animate-slide-in-left">Services</a>
+          </li>
+          <li>
+            <a href="#features" class="animate-slide-in-left">Features</a>
+          </li>
+          <li><a href="#blog" class="animate-slide-in-left">Blog</a></li>
+          <li><a href="#contact" class="animate-slide-in-left">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="overlay">
+        <div class="hero-content-box">
+          <h1 class="font-poppins">
+            <span class="animate-word delay-1">Innovating</span>
+            <span class="animate-word delay-2">Beyond</span>
+            <span class="animate-word delay-3">Boundaries</span>
+          </h1>
+          <p class="font-open-sans">
+            <span class="animate-word delay-4">We provide cutting-edge</span
+            ><br />
+            <span class="animate-word delay-5"
+              >technical solutions to elevate</span
+            ><br />
+            <span class="animate-word delay-6">your business.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section animate-slide-in-up">
+      <div class="about-content">
+        <h2 class="font-poppins">About Us</h2>
+        <hr class="underline" />
+        <p class="font-open-sans">
+          At InnovateHive, we empower businesses with innovative digital
+          solutions. From stunning web design and captivating graphics to
+          cutting-edge AI services and business consultations, our expert team
+          delivers tailored strategies to help you thrive in the digital age.
+        </p>
+        <p class="font-open-sans">
+          With a client-first approach and a passion for innovation, we turn
+          your ideas into impactful results. Let's design, analyze, and innovate
+          together for a brighter future.
+        </p>
+      </div>
+      <div class="about-image">
+        <img
+          src="{{ url_for('static', filename='img/h1.webp') }}"
+          alt="Person typing on a laptop"
+        />
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services animate-slide-in-up">
+      <h2 class="font-poppins">SERVICES</h2>
+      <div class="service-container">
+        <!-- First Row -->
+        <div class="service-row">
+          <a href="/website">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/ux.png') }}"
+                alt="Website Design"
+              />
+              <h3 class="font-poppins">Website Design</h3>
+              <p class="font-open-sans">
+                We design stunning, responsive, and user-friendly websites
+                tailored to your business needs.
+              </p>
+            </div>
+          </a>
+          <a href="/graphic">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/graphic-designer.png') }}"
+                alt="Graphic Design"
+              />
+              <h3 class="font-poppins">Graphic Design</h3>
+              <p class="font-open-sans">
+                Our team crafts compelling visuals, including logos, branding
+                materials, and social media graphics.
+              </p>
+            </div>
+          </a>
+          <a href="/video_editing">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/montage.png') }}"
+                alt="Video Editing"
+              />
+              <h3 class="font-poppins">Video Editing</h3>
+              <p class="font-open-sans">
+                Transform raw footage into engaging video content with
+                professional editing and motion graphics.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Second Row -->
+        <div class="service-row">
+          <a href="/content">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/creative-writing.png') }}"
+                alt="Content Writing"
+              />
+              <h3 class="font-poppins">Content Writing</h3>
+              <p class="font-open-sans">
+                We deliver high-quality, SEO-optimized content tailored for
+                blogs, websites, and social media.
+              </p>
+            </div>
+          </a>
+          <a href="/seo">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/search-engine-optimization.png') }}"
+                alt="Website SEO"
+              />
+              <h3 class="font-poppins">Website SEO</h3>
+              <p class="font-open-sans">
+                Boost your online presence with our Website SEO services and
+                proven optimization strategies.
+              </p>
+            </div>
+          </a>
+          <a href="/business_analysis">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/Bussiness_ana.png') }}"
+                alt="Business Analysis"
+              />
+              <h3 class="font-poppins">Business Analysis</h3>
+              <p class="font-open-sans">
+                We provide actionable insights through data analysis, market
+                research, and process optimization.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Third Row -->
+        <div class="service-row">
+          <a href="/app">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/user-interface.png') }}"
+                alt="App Design"
+              />
+              <h3 class="font-poppins">App Design</h3>
+              <p class="font-open-sans">
+                Design intuitive and visually stunning app interfaces for
+                Android, iOS, and cross-platform solutions.
+              </p>
+            </div>
+          </a>
+          <a href="/cloud">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/technology.png') }}"
+                alt="Cloud Tech"
+              />
+              <h3 class="font-poppins">Cloud Tech</h3>
+              <p class="font-open-sans">
+                Harness the power of the cloud with deployment on AWS, Azure,
+                and Google Cloud.
+              </p>
+            </div>
+          </a>
+          <a href="/ai_assistant_development">
+            <div class="service-box">
+              <img
+                src="{{ url_for('static', filename='img/ai-assistant.png') }}"
+                alt="AI Services"
+              />
+              <h3 class="font-poppins">AI Services</h3>
+              <p class="font-open-sans">
+                Implement AI technologies like machine learning and predictive
+                analytics to enhance innovation.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features animate-slide-in-up">
+      <h2 class="font-poppins">FEATURES</h2>
+      <div class="features-container">
+        <div class="feature-box">
+          <img
+            src="{{ url_for('static', filename='img/Feature-1.jpg') }}"
+            alt="Tailored Solutions"
+          />
+          <h3 class="font-poppins">Tailored Solutions for Every User</h3>
+          <p class="font-open-sans">
+            Our platform adapts to your unique needs with personalized
+            recommendations, customized workflows, and seamless integrations to
+            boost your efficiency.
+          </p>
+        </div>
+        <div class="feature-box">
+          <img
+            src="{{ url_for('static', filename='img/Feature-2.jpg') }}"
+            alt="Real-Time Analytics"
+          />
+          <h3 class="font-poppins">Real-Time Insights and Analytics</h3>
+          <p class="font-open-sans">
+            Stay ahead with live data tracking and actionable insights, enabling
+            smarter, data-driven decisions at the click of a button.
+          </p>
+        </div>
+        <div class="feature-box">
+          <img
+            src="{{ url_for('static', filename='img/Feature-3.jpg') }}"
+            alt="Seamless Experience"
+          />
+          <h3 class="font-poppins">Seamless Experience Anytime, Anywhere</h3>
+          <p class="font-open-sans">
+            Whether you're on desktop or mobile, our fully responsive design
+            ensures smooth, uninterrupted access to all features on the go.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog animate-slide-in-up">
+      <h1 class="font-poppins">BLOGS</h1>
+      <div class="container" id="blogContainer"></div>
+      <a href="/all_blogs" class="more-btn font-open-sans">More Blogs ▼</a>
+      <script>
+        const blogTitles = {
+          1: "Amazon Web Services (AWS): The Ultimate Cloud Computing Platform",
+          2: "Welcome to the Cloud – No Umbrella Required",
+          3: "The Rise of AI in Cybersecurity: Boon or Bane?",
+          4: "How AI is Transforming Digital Marketing",
+          5: "Data-Driven Decision Making: The Secret Weapon for Smart Businesses",
+          6: "How Modern Website & App Designs Impact User Engagement and Growth",
+          7: "Data Analysis: The Driving Force Behind Industry Transformation ",
+          8: "From Memes to Millions: How Digital Marketing Runs the Modern Business Circus",
+          9: "Unlocking the Potential of Visual Storytelling: Why Quality Content Matters",
+          10: "The Power of Visual Storytelling: My Journey in Photography and Cinematic Videos ",
+          11: "Digital Marketing: The Key to Success in Modern Business World ",
+          12: "How AI is Transforming Digital Marketing",
+        };
+
+        const blogThumbnails = {
+          1: "{{ url_for('static', filename='img/Blogs/Om Ghorpade/1.png') }}",
+          2: "{{ url_for('static', filename='img/Blogs/Gurbani/1.png') }}",
+          3: "{{ url_for('static', filename='img/Blogs/Sharv/1.png') }}",
+          4: "{{ url_for('static', filename='img/Blogs/Siddhi/1.png') }}",
+          5: "{{ url_for('static', filename='img/Blogs/Ajinkya/1.png') }}",
+          6: "{{ url_for('static', filename='img/Blogs/Anurag/1.png') }}",
+          7: "{{ url_for('static', filename='img/Blogs/Dhanashri/1.png') }}",
+          8: "{{ url_for('static', filename='img/Blogs/Nupur/1.png') }}",
+          9: "{{ url_for('static', filename='img/Blogs/Om Gws/1.png') }}",
+          10: "{{ url_for('static', filename='img/Blogs/Om Shahu/1.png') }}",
+          11: "{{ url_for('static', filename='img/Blogs/Sahil D/1.png') }}",
+          12: "{{ url_for('static', filename='img/Blogs/Anuja/1.png') }}",
+        };
+
+        const blogUrls = {
+          1: "/om",
+          2: "/gurbani",
+          3: "/sahil",
+          4: "/blog/ai-transforming-digital-marketing",
+          5: "/blog/data-driven-decision-making",
+          6: "/blog/modern-website-app-designs",
+          7: "/blog/data-analysis-industry-transformation",
+          8: "/blog/digital-marketing-modern-business",
+          9: "/blog/visual-storytelling-quality-content",
+          10: "/blog/power-of-visual-storytelling",
+          11: "/blog/digital-marketing-key-to-success",
+          12: "/blog/ai-transforming-digital-marketing",
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const blogContainer = document.getElementById("blogContainer");
+          for (let i = 1; i <= 3; i++) {
+            blogContainer.innerHTML += `
+          <a href="${blogUrls[i]}" class="blog-box">
+            <img src="${blogThumbnails[i]}" alt="${blogTitles[i]} Thumbnail" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;" />
+            <h3 class="font-poppins">${blogTitles[i]}</h3>
+            <p class="font-open-sans">Click to view more...</p>
+          </a>
+        `;
+          }
+        });
+      </script>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section animate-slide-in-up">
+      <div class="contact-container">
+        <div class="contact-form-container">
+          <div class="contact-header">
+            <h2 class="font-poppins">Contact Us ☎</h2>
+            <p class="contact-subheading font-open-sans">
+              We'd love to hear about your project
+            </p>
+          </div>
+
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  class="font-open-sans"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  class="font-open-sans"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone Number"
+                  class="font-open-sans"
+                />
+              </div>
+              <div class="form-group">
+                <select id="service" name="service" class="font-open-sans">
+                  <option value="" disabled selected>Select a Service</option>
+                  <option value="web-design">Website Design</option>
+                  <option value="graphic-design">Graphic Design</option>
+                  <option value="video-editing">Video Editing</option>
+                  <option value="seo">SEO Services</option>
+                  <option value="ai">AI Services</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <textarea
+                id="goal"
+                name="goal"
+                rows="3"
+                placeholder="Your Project Goals"
+                class="font-open-sans"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <input
+                id="budget"
+                name="budget"
+                class="font-open-sans"
+                placeholder="Budget"
+              />
+            </div>
+
+            <div class="form-group">
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                required
+                class="font-open-sans"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn font-poppins">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+
+          <div id="formMessage" class="flash-messages"></div>
+
+          <div class="contact-links">
+            <div class="divider">
+              <span class="divider-text font-open-sans">OR</span>
+            </div>
+            <p class="direct-contact font-open-sans">Reach us directly at:</p>
+            <div class="contact-options">
+              <a href="mailto:innovatehive7@gmail.com" class="contact-option">
+                <i class="fas fa-envelope"></i>
+                innovatehive7@gmail.com
+              </a>
+              <a
+                href="https://www.instagram.com/innovatehive.in/"
+                class="contact-option"
+              >
+                <i class="fab fa-instagram"></i>
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section animate-slide-in-up">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3157.835160368302!2d75.79449591577922!3d19.876165879175816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdba29eb26b62f3%3A0x20e8d9d9b87c6b8a!2sMaharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer animate-slide-in-up">
+      <div class="footer-content">
+        <h2 class="font-poppins">InnovateHive</h2>
+        <p class="font-open-sans">InnovateHive © 2025 All rights reserved</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#home" class="font-open-sans">HOME</a>
+        <a href="#about" class="font-open-sans">ABOUT</a>
+        <a href="#services" class="font-open-sans">SERVICES</a>
+        <a href="#features" class="font-open-sans">FEATURES</a>
+        <a href="#blog" class="font-open-sans">BLOG</a>
+        <a href="#contact" class="font-open-sans">CONTACT</a>
+      </nav>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const formMessage = document.getElementById("formMessage");
+
+          // Show loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+          formMessage.innerHTML = "";
+
+          try {
+            const formData = {
+              name: this.name.value,
+              email: this.email.value,
+              phone: this.phone.value,
+              service: this.service.value,
+              goal: this.goal.value,
+              budget: this.budget.value,
+              message: this.message.value,
+            };
+
+            const response = await fetch("/api/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (result.status === "success") {
+              formMessage.innerHTML = `
+                <div class="alert alert-success">
+                  ${result.message}
+                </div>`;
+              this.reset();
+            } else {
+              throw new Error(result.message || "Failed to send message");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            formMessage.innerHTML = `
+              <div class="alert alert-error">
+                Error: ${error.message || "An unexpected error occurred"}
+              </div>`;
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML =
+              '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+          }
+        });
+      });
+    </script>
+    <script>
+      // Make navbar sticky and add scroll effects
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+          } else {
+            header.classList.remove("header-scrolled");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

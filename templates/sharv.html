@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore the dual role of AI in cybersecurity - both as a powerful defense tool and a potential threat vector."
+    />
+    <title>InnovateHive Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* General Styles */
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        background-color: #004466;
+        padding: 15px 30px;
+        color: white;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo img {
+        height: 70px;
+        width: auto;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 8px;
+      }
+
+      .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+      }
+
+      /* Blog Section */
+      .blog-section {
+        padding: 50px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .blog-section h1 {
+        font-size: 48px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #004466;
+      }
+
+      .blog-section .subtitle {
+        font-size: 18px;
+        text-align: center;
+        color: #666;
+        margin-bottom: 50px;
+      }
+
+      .blog-post {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .blog-post:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 30px;
+      }
+
+      .blog-content h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #004466;
+      }
+
+      .blog-content h3 {
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #065a77;
+      }
+
+      .blog-content .meta {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .blog-content .author {
+        color: #065a77;
+        font-weight: bold;
+      }
+
+      .blog-content p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .blog-content ul {
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+
+      .blog-content ul li {
+        margin-bottom: 10px;
+      }
+
+      .blog-content .author-signature {
+        font-style: italic;
+        color: #065a77;
+        margin-top: 20px;
+      }
+
+      .blog-content .linkedin-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #065a77;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .blog-content .linkedin-link:hover {
+        color: #00bfff;
+      }
+
+      .blog-content .linkedin-link i {
+        margin-right: 10px;
+      }
+
+      .key-takeaways {
+        background-color: #f0f8ff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+
+      .key-takeaways h3 {
+        margin-top: 0;
+      }
+
+      .key-takeaways ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .key-takeaways li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .key-takeaways li:before {
+        content: "•";
+        color: #004466;
+        font-weight: bold;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #004466;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer .social-links {
+        margin-top: 10px;
+      }
+
+      .footer .social-links a {
+        color: white;
+        margin: 0 10px;
+        font-size: 20px;
+        transition: color 0.3s ease;
+      }
+
+      .footer .social-links a:hover {
+        color: #00bfff;
+      }
+
+      /* Animation for Fade-in */
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        header .nav-links {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .blog-section h1 {
+          font-size: 36px;
+        }
+
+        .blog-content h2 {
+          font-size: 28px;
+        }
+
+        .blog-image img {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="logo-container">
+          <div class="logo">
+            <img
+              src="{{ url_for('static', filename='img/LOGO_1.png') }}"
+              alt="InnovateHive Logo"
+            />
+          </div>
+          <h1>InnovateHive</h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#blog">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+      <div class="blog-container">
+        <h1>The Rise of AI in Cybersecurity: Boon or Bane?</h1>
+        <p class="subtitle">
+          Exploring the dual role of AI as both cybersecurity protector and
+          potential threat
+        </p>
+
+        <!-- AI in Cybersecurity Blog Post -->
+        <article class="blog-post">
+          <div class="blog-image">
+            <img
+              src="{{ url_for('static', filename='img/CS.jpg') }}"
+              alt="AI in cybersecurity illustration"
+            />
+          </div>
+          <div class="blog-content">
+            <h2>Is AI Making Us Safer or Putting Us at Risk?</h2>
+            <p class="meta">
+              Published on June 10, 2024 by
+              <span class="author">Sharv Sankpal</span>
+            </p>
+            <p>
+              Imagine receiving an email that looks exactly like one from your
+              bank—complete with the correct logo, formatting, and personalized
+              details. You wouldn't suspect it's fake. Yet, behind the scenes,
+              AI has crafted this email, making it nearly impossible to detect
+              as a phishing attempt. At the same time, AI-powered cybersecurity
+              tools are scanning millions of online activities, identifying
+              threats in real time, and blocking attacks before they happen. AI
+              is reshaping the battlefield of cybersecurity, but is it
+              protecting us or exposing us to even greater dangers?
+            </p>
+
+            <p>
+              Artificial Intelligence is transforming cybersecurity by making
+              systems more intelligent, faster, and proactive. Traditional
+              security measures relied on fixed rules, meaning they could only
+              detect known threats. AI, however, learns from data patterns and
+              identifies unusual behavior—even for never-before-seen attack
+              methods. This real-time anomaly detection helps prevent breaches
+              before damage occurs. AI tools can also respond instantly,
+              blocking access or isolating infected systems without human
+              intervention, saving critical time and reducing the impact of
+              attacks.
+            </p>
+
+            <h3>AI's Double-Edged Sword</h3>
+
+            <h4>1. Enhanced Security Measures</h4>
+            <p>
+              AI strengthens authentication through facial recognition,
+              behavioral biometrics, and multi-factor authentication. By
+              analyzing user interaction patterns, it can flag fraudulent login
+              attempts, making systems harder to breach.
+            </p>
+
+            <h4>2. AI-Powered Cybercrime</h4>
+            <p>
+              Cybercriminals now weaponize AI to create hyper-realistic phishing
+              emails (using natural language processing) and adaptive malware
+              that evades traditional defenses. For example, AI-generated emails
+              mimic a recipient's writing style, while malware evolves in real
+              time to bypass detection.
+            </p>
+
+            <h4>3. The Deepfake Threat</h4>
+            <p>
+              AI-driven deepfakes—fake videos or audio recordings—pose
+              unprecedented risks. Imagine a video call from your "boss"
+              instructing a fund transfer, only to discover it's an AI-generated
+              impersonation. Such scams threaten businesses, governments, and
+              individuals.
+            </p>
+
+            <h4>4. Over-Reliance on AI</h4>
+            <p>
+              Blind trust in AI is dangerous. Hackers can manipulate AI systems
+              with corrupted data, leading to false conclusions. Human oversight
+              remains essential to catch AI's blind spots.
+            </p>
+
+            <h4>5. Privacy Concerns</h4>
+            <p>
+              AI systems collect massive data to improve accuracy. Without
+              strict regulations, this risks privacy violations. Who controls
+              this data, and how is it used? Ethical guidelines are critical.
+            </p>
+
+            <h3>Conclusion: A Tool, Not a Savior</h3>
+            <p>
+              AI is both a shield and a weapon in cybersecurity. Its potential
+              to protect is revolutionary, but its misuse by malicious actors is
+              equally powerful. The future hinges on responsible development,
+              ethical use, and human vigilance. As future professionals, we must
+              harness AI's benefits while guarding against its risks. The
+              question remains: Will AI be our greatest protector or our most
+              formidable adversary?
+            </p>
+
+            <div class="key-takeaways">
+              <h3>Key Takeaways:</h3>
+              <ul>
+                <li>
+                  <strong>AI Advantages:</strong> Real-time threat detection,
+                  automated responses, advanced authentication.
+                </li>
+                <li>
+                  <strong>AI Risks:</strong> Sophisticated phishing, adaptive
+                  malware, deepfake scams, privacy issues.
+                </li>
+                <li>
+                  <strong>The Balance:</strong> Human oversight + ethical AI = a
+                  safer digital future.
+                </li>
+              </ul>
+            </div>
+
+            <p class="author-signature">- Sharv Sankpal</p>
+            <a
+              href="https://www.linkedin.com/in/sharv-sankpal/"
+              target="_blank"
+              class="linkedin-link"
+            >
+              <i class="fab fa-linkedin"></i> Connect with me on LinkedIn
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <h2>InnovateHive</h2>
+        <p>Copyright © 2025 All rights reserved</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Add smooth scrolling to all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Add fade-in animation to blog posts
+      const blogPosts = document.querySelectorAll(".blog-post");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      blogPosts.forEach((post) => {
+        observer.observe(post);
+      });
+    </script>
+  </body>
+</html>
