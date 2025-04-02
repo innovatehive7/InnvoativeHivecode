@@ -110,6 +110,58 @@ h1 {
   font-size: 25px;
   text-align: left;
 }
+/* Hero Section Styles */
+.hero-content-box h1 {
+  font-size: 70px;
+  margin-bottom: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.animate-word {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: wordReveal 0.8s ease-out forwards;
+  display: inline-block;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+.delay-3 {
+  animation-delay: 1s;
+}
+.delay-4 {
+  animation-delay: 1.4s;
+}
+.delay-5 {
+  animation-delay: 1.8s;
+}
+.delay-6 {
+  animation-delay: 2.2s;
+}
+
+@keyframes wordReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content-box p {
+  font-size: 25px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.hero-content-box p span {
+  display: inline-block;
+}
 
 .about-section {
   display: flex;
@@ -167,6 +219,14 @@ h1 {
   font-size: 2em;
   margin-bottom: 20px;
   color: #004466;
+}
+.services h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #004466;
+  margin: 10px auto;
 }
 
 .service-container {
@@ -237,7 +297,7 @@ h1 {
   display: block;
   width: 60px;
   height: 3px;
-  background-color: #007bff;
+  background-color: #004466;
   margin: 10px auto;
 }
 
@@ -283,6 +343,14 @@ h1 {
   margin-bottom: 20px;
   text-align: center;
   color: #004466;
+}
+.blog h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #004466;
+  margin: 10px auto;
 }
 
 .blog h3 {
