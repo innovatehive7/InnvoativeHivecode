@@ -2,8 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Website SEO - Innovethive</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Video Editing - InnovateHive</title>
     <style>
       /* Reset and Base Styles */
       * {
@@ -379,43 +382,46 @@
 
     <!-- Content Section -->
     <div class="container">
-      <h1>Website SEO</h1>
-      <p>
-        Improve your website’s visibility, increase organic traffic, and drive
-        conversions.
-      </p>
-
-      <section id="benefits" class="section">
+      <!-- Video Editing Section -->
+      <section id="video-editing" class="section">
         <div class="content">
-          <h2>Key Benefits</h2>
-          <h3>Higher Search Rankings</h3>
-          <p>Strategic SEO implementation for better visibility.</p>
-          <h3>Stronger Credibility</h3>
-          <p>Ranking higher builds trust with potential customers.</p>
-          <h3>Higher Engagement & Retention</h3>
-          <p>Increased conversions.</p>
-        </div>
-        <img
-          src="{{ url_for('static', filename='img/W-1.jpg') }}"
-          alt="SEO Benefits"
-        />
-      </section>
-
-      <section id="services" class="section">
-        <div class="content">
-          <h2>Services</h2>
+          <h2>Video Editing 🎥</h2>
+          <p>
+            Produce high-quality, engaging videos to boost brand awareness and
+            customer retention.
+          </p>
+          <h3>Key Benefits</h3>
           <ul>
-            <li>SEO Audit, Keyword Research & On-Page Optimization</li>
-            <li>Technical SEO, Link Building & Content Strategy</li>
-            <li>Local SEO & Performance Analytics</li>
+            <li>
+              <strong>Stronger Brand Messaging –</strong> Professional edits
+              with seamless transitions and visual effects.
+            </li>
+            <li>
+              <strong>Higher Engagement –</strong> Captivating storytelling that
+              keeps audiences hooked.
+            </li>
+            <li>
+              <strong>Optimized for Various Platforms –</strong> Videos are
+              customized for YouTube with engaging thumbnails and SEO-optimized
+              titles, formatted for social media with attention-grabbing short
+              clips, and tailored for corporate use with professional branding
+              and clear messaging.
+            </li>
+          </ul>
+          <h3>Services 🎬</h3>
+          <ul>
+            <li>Corporate & Marketing Video Editing</li>
+            <li>Social Media & YouTube Content Creation</li>
+            <li>Event Highlights, Explainer Videos & Product Showcases</li>
           </ul>
         </div>
         <img
-          src="{{ url_for('static', filename='img/W-2.jpg') }}"
-          alt="SEO Benefits"
+          src="{{ url_for('static', filename='img/V-4.jpg') }}"
+          alt="Video Editing Services"
         />
       </section>
 
+      <!-- Process Section -->
       <section id="process" class="section">
         <div class="content">
           <h2>Our Process ⚙️</h2>
@@ -451,7 +457,7 @@
         </div>
         <img
           src="{{ url_for('static', filename='img/flow.jpg') }}"
-          alt="Cloud"
+          alt="Video Production Process"
         />
       </section>
 
@@ -459,6 +465,71 @@
     </div>
 
     <!-- Footer Section -->
-    top: targetElement.offsetTop - 80,
+
+    <!-- Footer Section -->
+    <div class="footer">
+      <div class="footer-content">
+        <h2>InnovateHive</h2>
+        <p>© 2025 InnovateHive. All rights reserved.</p>
+        <div class="footer-nav">
+          <a href="/#home">Home</a>
+          <a href="#benefits">Benefits</a>
+          <a href="/#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="/#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Toggle mobile menu
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        const navItems = document.querySelectorAll(".nav-links li a");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (window.innerWidth <= 767) {
+              navLinks.classList.remove("active");
+            }
+          });
+        });
+
+        // Make navbar sticky and add scroll effects
+        const header = document.querySelector("header");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+          } else {
+            header.classList.remove("header-scrolled");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
