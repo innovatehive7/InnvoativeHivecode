@@ -101,7 +101,7 @@ def graphic():
 
 @app.route('/video_editing')
 def video_editing():
-    return render_template('video_editing.html')
+    return render_template('Video_editing.html')
 
 @app.route('/content')
 def content():
@@ -113,7 +113,7 @@ def seo():
 
 @app.route('/business_analysis')
 def business_analysis():
-    return render_template('business_analysis.html')
+    return render_template('Business_analysis.html')
 
 @app.route('/app')
 def app_design():
@@ -125,7 +125,7 @@ def cloud():
 
 @app.route('/ai_assistant_development')
 def ai_assistant():
-    return render_template('ai_assistant_development.html')
+    return render_template('Ai_Assistant_Development.html')
 
 # All Blogs Page
 @app.route('/all_blogs')
