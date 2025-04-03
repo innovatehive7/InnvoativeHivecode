@@ -22,7 +22,7 @@
       }
 
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Arial", sans-serif;
         background-color: #f9f9f9;
         color: #333;
         line-height: 1.6;
@@ -68,6 +68,7 @@
         color: white;
         font-size: 1.5rem;
         margin: 0;
+        white-space: nowrap;
       }
 
       .nav-links {
@@ -97,7 +98,7 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
-        padding-bottom: 80px; /* Space for footer */
+        padding-bottom: 100px; /* Space for footer */
       }
 
       h1,
@@ -139,6 +140,7 @@
         height: auto;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
       }
 
       .content {
@@ -166,7 +168,7 @@
         font-weight: bold;
         border-radius: 6px;
         transition: background-color 0.3s ease;
-        margin: 60px auto;
+        margin: 40px auto;
         text-align: center;
         width: fit-content;
       }
@@ -215,8 +217,28 @@
         text-decoration: underline;
       }
 
+      /* Mobile menu toggle */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: white;
+        padding: 5px;
+      }
+
+      /* Tablet Styles */
+      @media (min-width: 600px) {
+        .section img {
+          max-height: 400px;
+        }
+
+        .logo-container h1 {
+          font-size: 1.6rem;
+        }
+      }
+
       /* Desktop Styles */
-      @media (min-width: 768px) {
+      @media (min-width: 992px) {
         .section {
           flex-direction: row;
           align-items: center;
@@ -229,10 +251,12 @@
 
         .content {
           width: 50%;
+          padding: 0 20px;
         }
 
         .section img {
           width: 45%;
+          max-height: none;
         }
 
         .logo img {
@@ -269,13 +293,7 @@
         }
       }
 
-      /* Mobile menu toggle */
-      .menu-toggle {
-        display: none;
-        cursor: pointer;
-        font-size: 1.5rem;
-      }
-
+      /* Mobile menu styles */
       @media (max-width: 767px) {
         .menu-toggle {
           display: block;
@@ -287,6 +305,8 @@
           flex-direction: column;
           gap: 10px;
           margin-top: 15px;
+          padding-top: 15px;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .nav-links.active {
@@ -294,8 +314,44 @@
         }
 
         .navbar {
-          flex-direction: column;
-          align-items: flex-start;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .logo-container h1 {
+          font-size: 1.3rem;
+        }
+
+        .container {
+          padding-bottom: 120px; /* More space for footer on mobile */
+        }
+      }
+
+      /* Very small mobile devices */
+      @media (max-width: 480px) {
+        header {
+          padding: 10px 15px;
+        }
+
+        .logo-container h1 {
+          font-size: 1.1rem;
+        }
+
+        .logo img {
+          height: 40px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .cta-button {
+          width: 100%;
+          margin: 30px auto;
         }
       }
     </style>
@@ -312,8 +368,8 @@
             />
           </div>
           <h1>InnovateHive</h1>
-          <div class="menu-toggle">☰</div>
         </div>
+        <button class="menu-toggle">☰</button>
         <ul class="nav-links">
           <li><a href="/#home">Home</a></li>
           <li><a href="#benefits">Benefits</a></li>
@@ -423,41 +479,54 @@
       </div>
     </div>
 
-       <script>
+    <script>
       // Toggle mobile menu
-      document
-        .querySelector(".menu-toggle")
-        .addEventListener("click", function () {
-          document.querySelector(".nav-links").classList.toggle("active");
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
         });
 
-      // Close mobile menu when clicking a link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", function () {
-          document.querySelector(".nav-links").classList.remove("active");
-        });
-      });
-
-      // Prevent horizontal scrolling
-      document.addEventListener(
-        "touchmove",
-        function (e) {
-          if (e.touches.length === 1) {
-            const touch = e.touches[0];
-            if (
-              touch.clientX <= 10 ||
-              touch.clientX >= window.innerWidth - 10
-            ) {
-              e.preventDefault();
+        // Close menu when a link is clicked (for mobile)
+        const navItems = document.querySelectorAll(".nav-links li a");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (window.innerWidth <= 767) {
+              navLinks.classList.remove("active");
             }
-          }
-        },
-        { passive: false }
-      );
+          });
+        });
 
-      // Prevent zooming
-      document.addEventListener("gesturestart", function (e) {
-        e.preventDefault();
+        // Make navbar sticky and add scroll effects
+        const header = document.querySelector("header");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+          } else {
+            header.classList.remove("header-scrolled");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
       });
     </script>
   </body>
