@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta
       name="description"
       content="Explore the latest trends, insights, and innovations in technology and design at InnovationHive Blog."
@@ -17,12 +20,27 @@
     />
     <style>
       /* General Styles */
-      body {
+      * {
+        box-sizing: border-box;
         margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      body {
         font-family: "Arial", sans-serif;
         background-color: #f9f9f9;
         color: #333;
         line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
       /* Header */
@@ -30,9 +48,12 @@
         background-color: #004466;
         padding: 15px 30px;
         color: white;
-        height: 50px;
+        height: auto;
         display: flex;
         align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
       }
 
       .navbar {
@@ -40,28 +61,29 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        flex-wrap: wrap;
       }
 
       .logo-container {
         display: flex;
         align-items: center;
-        gap: 10px; /* Adjust the gap between the logo and the name */
+        gap: 10px;
       }
 
       .logo img {
-        height: 70px; /* Adjust the height of the logo as needed */
-        width: auto; /* Maintain aspect ratio */
+        height: 50px;
+        width: auto;
       }
 
       h1 {
-        margin: 0; /* Remove default margin for better alignment */
-        font-size: 24px; /* Adjust font size as needed */
+        margin: 0;
+        font-size: 24px;
       }
 
       .nav-links {
         list-style: none;
         display: flex;
-        gap: 20px;
+        gap: 15px;
         padding: 0;
         margin: 0;
       }
@@ -69,8 +91,9 @@
       .nav-links li a {
         color: white;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
         padding: 8px;
+        white-space: nowrap;
       }
 
       .nav-links li a:hover {
@@ -78,71 +101,87 @@
         border-radius: 4px;
       }
 
+      /* Mobile Menu Toggle */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
       /* Blog Section */
       .blog-section {
-        padding: 50px 20px;
+        padding: 30px 15px;
         max-width: 1200px;
         margin: 0 auto;
+        width: 100%;
+        flex: 1;
       }
 
       .blog-section h1 {
-        font-size: 48px;
+        font-size: 2rem;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        color: #004466;
+        line-height: 1.2;
       }
 
       .blog-section .subtitle {
-        font-size: 18px;
+        font-size: 1rem;
         text-align: center;
         color: #666;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
       }
 
       .blog-post {
         background: white;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .blog-post:hover {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       }
 
       .blog-image img {
         width: 100%;
-        height: 300px;
+        height: auto;
+        max-height: 400px;
         object-fit: cover;
       }
 
       .blog-content {
-        padding: 30px;
+        padding: 20px;
       }
 
       .blog-content h2 {
-        font-size: 32px;
+        font-size: 1.5rem;
         margin-bottom: 10px;
+        color: #004466;
+        line-height: 1.3;
       }
 
       .blog-content h3 {
-        font-size: 24px;
+        font-size: 1.3rem;
         margin-top: 20px;
         margin-bottom: 10px;
+        color: #065a77;
       }
 
       .blog-content h4 {
-        font-size: 20px;
+        font-size: 1.1rem;
         margin-top: 15px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+        color: #065a77;
       }
 
       .blog-content .meta {
-        font-size: 14px;
+        font-size: 0.9rem;
         color: #666;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
       }
 
       .blog-content .author {
@@ -151,9 +190,9 @@
       }
 
       .blog-content p {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 20px;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
       }
 
       .blog-content ul {
@@ -173,7 +212,7 @@
 
       .blog-content .linkedin-link {
         display: inline-block;
-        margin-top: 20px;
+        margin-top: 15px;
         color: #065a77;
         text-decoration: none;
         font-weight: bold;
@@ -185,7 +224,39 @@
       }
 
       .blog-content .linkedin-link i {
-        margin-right: 10px;
+        margin-right: 8px;
+      }
+
+      .key-takeaways {
+        background-color: #f0f8ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 25px;
+      }
+
+      .key-takeaways h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      .key-takeaways ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .key-takeaways li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .key-takeaways li:before {
+        content: "•";
+        color: #004466;
+        font-weight: bold;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
       }
 
       /* Footer */
@@ -194,6 +265,16 @@
         color: white;
         text-align: center;
         padding: 20px;
+        width: 100%;
+      }
+
+      .footer h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
       }
 
       .footer .social-links {
@@ -228,22 +309,95 @@
       }
 
       /* Responsive Design */
-      @media (max-width: 768px) {
-        header .nav-links {
-          flex-direction: column;
-          gap: 10px;
-        }
-
+      @media (max-width: 992px) {
         .blog-section h1 {
-          font-size: 36px;
+          font-size: 1.8rem;
         }
 
         .blog-content h2 {
-          font-size: 28px;
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 15px;
         }
 
-        .blog-image img {
-          height: 200px;
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo-container {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 15px;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li {
+          width: 100%;
+          padding: 5px 0;
+        }
+
+        .blog-section {
+          padding: 20px 10px;
+        }
+
+        .blog-section h1 {
+          font-size: 1.5rem;
+        }
+
+        .blog-content {
+          padding: 15px;
+        }
+
+        .blog-content h2 {
+          font-size: 1.2rem;
+        }
+
+        .blog-content h3 {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo img {
+          height: 40px;
+        }
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        .blog-section h1 {
+          font-size: 1.3rem;
+        }
+
+        .blog-section .subtitle {
+          font-size: 0.9rem;
+        }
+
+        .blog-content .meta {
+          font-size: 0.8rem;
+        }
+
+        .blog-content p {
+          font-size: 0.9rem;
         }
       }
     </style>
@@ -253,25 +407,24 @@
     <header>
       <nav class="navbar">
         <div class="logo-container">
-          <div class="logo animate-slide-in-left">
+          <div class="logo">
             <img
               src="{{ url_for('static', filename='img/LOGO_1.png') }}"
-              alt="SEO Benefits"
+              alt="InnovateHive Logo"
             />
           </div>
-          <h1 class="animate-slide-in-left">InnovateHive</h1>
+          <h1>InnovateHive</h1>
+          <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
         </div>
-        <ul class="nav-links">
-          <li><a href="/#home" class="animate-slide-in-left">Home</a></li>
-          <li><a href="/#about" class="animate-slide-in-left">About</a></li>
-          <li>
-            <a href="/#services" class="animate-slide-in-left">Services</a>
-          </li>
-          <li>
-            <a href="/#features" class="animate-slide-in-left">Features</a>
-          </li>
-          <li><a href="/#blog" class="animate-slide-in-left">Blog</a></li>
-          <li><a href="/#contact" class="animate-slide-in-left">Contact</a></li>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#blog">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -300,24 +453,24 @@
               <span class="author">Gurbani Gambhir</span>
             </p>
             <p>
-              If you’ve ever scratched your head wondering what "the cloud"
-              actually is, don’t worry—you’re not alone. It’s one of those
+              If you've ever scratched your head wondering what "the cloud"
+              actually is, don't worry—you're not alone. It's one of those
               buzzwords tech people throw around like confetti at a wedding. But
-              here’s the thing: the cloud isn’t some mysterious, floating entity
-              in the sky storing your vacation selfies. It’s actually a game
+              here's the thing: the cloud isn't some mysterious, floating entity
+              in the sky storing your vacation selfies. It's actually a game
               changer for businesses, both big and small, and (spoiler alert)
-              you’re probably using it every single day. So, let’s break it
+              you're probably using it every single day. So, let's break it
               down. No jargon. No boring tech lingo. Just a straightforward chat
-              about what the cloud is, where it came from, and why it’s
+              about what the cloud is, where it came from, and why it's
               basically the superhero of modern business.
             </p>
-            <h3>So, What Exactly Is “The Cloud”?</h3>
+            <h3>So, What Exactly Is "The Cloud"?</h3>
             <p>
               Imagine carrying around a giant, overstuffed backpack with all
               your files, software, and data. Annoying, right? Now, imagine
               ditching that for instant access to everything, from anywhere—your
               laptop, phone, or even that old tablet you refuse to throw away.
-              That’s what cloud computing does. Instead of storing everything on
+              That's what cloud computing does. Instead of storing everything on
               your device, it lives on remote servers, accessible via the
               internet. Services like Google Drive, Dropbox, and iCloud help
               individuals store files, while businesses use AWS, Microsoft
@@ -343,10 +496,10 @@
                 Netflix, smart devices—you name it.
               </li>
             </ul>
-            <p>So yeah, the cloud isn’t new—it just got way better.</p>
+            <p>So yeah, the cloud isn't new—it just got way better.</p>
             <h3>Why the Cloud is a Big Deal?</h3>
             <p>
-              Still wondering why businesses are obsessed with the cloud? Let’s
+              Still wondering why businesses are obsessed with the cloud? Let's
               break it down:
             </p>
             <ul>
@@ -357,32 +510,32 @@
                 lets you pay for only what you use.
               </li>
               <li>
-                <strong>It’s Ridiculously Scalable:</strong> If your business
+                <strong>It's Ridiculously Scalable:</strong> If your business
                 suddenly blows up (nice flex, by the way), you can scale up
                 instantly—no need for hardware upgrades or IT headaches.
               </li>
               <li>
                 <strong>Your Data is (Mostly) Safer:</strong> Cloud providers
-                spend billions on security—way more than your personal laptop’s
+                spend billions on security—way more than your personal laptop's
                 antivirus can handle. With encryption, backups, and firewalls,
                 your data is safer in the cloud than on your hard drive.
               </li>
               <li>
                 <strong>Work from Anywhere – Even in Your Pajamas:</strong> All
-                you need is an internet connection. Whether you’re at home, in a
+                you need is an internet connection. Whether you're at home, in a
                 coffee shop, or on a beach in Bali, your office goes wherever
                 you go.
               </li>
               <li>
                 <strong>Disaster Recovery? Covered:</strong> Ever lost years of
-                work to a dead laptop? With cloud backups, that’s no longer a
+                work to a dead laptop? With cloud backups, that's no longer a
                 problem. Even if disaster strikes, your files are safe and
                 sound.
               </li>
             </ul>
             <h3>How Businesses Can Use the Cloud to Dominate</h3>
             <p>
-              Alright, let’s get practical. How can businesses—whether a
+              Alright, let's get practical. How can businesses—whether a
               one-person startup or a Fortune 500 giant—actually use cloud
               computing?
             </p>
@@ -425,10 +578,10 @@
               </li>
             </ul>
             <h3>
-              How You’re Already Using Cloud Computing (Even If You Don’t
+              How You're Already Using Cloud Computing (Even If You Don't
               Realize It)
             </h3>
-            <p>Think you don’t use the cloud? Let’s check:</p>
+            <p>Think you don't use the cloud? Let's check:</p>
             <ul>
               <li><strong>Gmail?</strong> Yup, cloud.</li>
               <li><strong>Netflix streaming?</strong> Cloud.</li>
@@ -439,13 +592,13 @@
               <li><strong>Yelling at Alexa?</strong> Also cloud.</li>
             </ul>
             <p>
-              Unless you’re living completely off the grid, you’re already
+              Unless you're living completely off the grid, you're already
               knee-deep in cloud computing.
             </p>
-            <h3>The Future of Cloud Computing: What’s Next? 🚀</h3>
+            <h3>The Future of Cloud Computing: What's Next? 🚀</h3>
             <p>
-              The cloud isn’t just sticking around—it’s getting smarter and more
-              powerful. Here’s what’s coming next:
+              The cloud isn't just sticking around—it's getting smarter and more
+              powerful. Here's what's coming next:
             </p>
             <ul>
               <li>
@@ -477,15 +630,15 @@
               Final Thoughts: The Cloud is Here to Stay – Are You Onboard?
             </h3>
             <p>
-              So, there you have it—the cloud in all its glory. It’s not just a
-              tech buzzword—it’s the backbone of modern business. Whether you’re
+              So, there you have it—the cloud in all its glory. It's not just a
+              tech buzzword—it's the backbone of modern business. Whether you're
               a small business owner, a growing startup, or just someone tired
               of "storage full" notifications, the cloud is working for you.
               Now, the real question is: Are you taking full advantage of it? If
-              you’re still stuck in USB drive and manual software install mode,
-              it’s time for an upgrade. The cloud is faster, safer, and way more
+              you're still stuck in USB drive and manual software install mode,
+              it's time for an upgrade. The cloud is faster, safer, and way more
               convenient than traditional IT setups. So whether you're jumping
-              in headfirst or just dipping your toes in, one thing’s for sure:
+              in headfirst or just dipping your toes in, one thing's for sure:
               the cloud is the future. And the best part? No umbrellas required.
               ☁
             </p>
@@ -512,31 +665,63 @@
 
     <!-- Scripts -->
     <script>
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("active");
+        });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document.getElementById("nav-links").classList.remove("active");
         });
       });
 
-      // Fade-in animation for blog posts
+      // Add smooth scrolling to all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          if (this.getAttribute("href") !== "#") {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add fade-in animation to blog posts
       const blogPosts = document.querySelectorAll(".blog-post");
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("fade-in");
-              observer.unobserve(entry.target); // Stop observing once animated
             }
           });
         },
-        { threshold: 0.3 }
+        { threshold: 0.2 }
       );
 
-      blogPosts.forEach((post) => observer.observe(post));
+      blogPosts.forEach((post) => {
+        observer.observe(post);
+      });
+
+      // Prevent horizontal scrolling
+      window.addEventListener("scroll", function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      });
+
+      // Reset scroll position on load
+      window.onload = function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      };
     </script>
   </body>
 </html>
