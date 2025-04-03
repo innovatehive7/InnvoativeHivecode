@@ -24,21 +24,6 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Navbar Styles */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #004466;
-  padding: 15px 30px;
-  color: white;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -52,45 +37,6 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-  margin-left: auto; /* This pushes the nav links to the right */
-}
-
-/* Mobile menu styles */
-@media (max-width: 992px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background-color: #004466;
-    flex-direction: column;
-    padding: 20px 0;
-    z-index: 999;
-    margin-left: 0; /* Reset margin for mobile */
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-    margin-left: auto; /* Position toggle button at far right */
-    order: 2; /* Ensure it stays on the right */
-  }
-
-  .logo-container {
-    order: 1; /* Ensure logo stays on the left */
-  }
 }
 
 .logo img {
@@ -109,7 +55,7 @@ h1 {
   gap: 20px;
   padding: 0;
   margin: 0;
-  margin-left: 600px;
+  margin-left: auto;
 }
 
 .nav-links li a {
@@ -117,6 +63,7 @@ h1 {
   text-decoration: none;
   font-size: 18px;
   padding: 8px;
+  transition: all 0.3s ease;
 }
 
 .nav-links li a:hover {
@@ -124,28 +71,62 @@ h1 {
   border-radius: 4px;
 }
 
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  padding: 10px;
+}
+
+/* Mobile menu styles */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #004466;
+    flex-direction: column;
+    padding: 20px 0;
+    margin-left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
 /* Hero Section */
 .hero {
   position: relative;
   height: 80vh;
-  background: url("../img/28064121-0343-47f0-b897-ba9efba9569c.webp")
-    center/cover no-repeat;
+  background-image: url("../img/28064121-0343-47f0-b897-ba9efba9569c.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ccc; /* Fallback color if image fails to load */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hero-content-box {
@@ -933,29 +914,6 @@ h1 {
   }
   .blog-box {
     width: 48%;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background-color: #004466;
-    padding: 20px 0;
-    z-index: 999;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-    position: absolute;
-    right: 30px;
-    top: 25px;
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
   }
 }
 
