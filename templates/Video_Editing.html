@@ -224,6 +224,15 @@
         font-size: 1.5rem;
         color: white;
         padding: 5px;
+        background: transparent; /* Add this */
+        border: none; /* Remove default button border */
+      }
+
+      /* Add this to remove any potential focus/hover effects */
+      .menu-toggle:hover,
+      .menu-toggle:focus {
+        background: transparent;
+        outline: none;
       }
 
       /* Tablet Styles */
@@ -463,6 +472,8 @@
 
       <a href="/#contact" class="cta-button">Create Project with Us</a>
     </div>
+
+    <!-- Footer Section -->
 
     <!-- Footer Section -->
     <div class="footer">
