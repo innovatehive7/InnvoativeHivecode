@@ -394,10 +394,6 @@
 
       <!-- Key Benefits -->
       <div class="section">
-        <img
-          src="{{ url_for('static', filename='img/APP-2.jpg') }}"
-          alt="App Design"
-        />
         <div class="content">
           <h2>Key Benefits</h2>
           <h3>Enhanced UX/UI</h3>
@@ -407,6 +403,10 @@
           <h3>Higher Engagement & Retention</h3>
           <p>Interactive and aesthetically appealing apps.</p>
         </div>
+        <img
+          src="{{ url_for('static', filename='img/APP-2.jpg') }}"
+          alt="App Design"
+        />
       </div>
 
       <!-- Services -->
@@ -470,6 +470,70 @@
     </div>
 
     <!-- Footer Section -->
-    top: targetElement.offsetTop - 80,
+    <!-- Footer Section -->
+    <div class="footer">
+      <div class="footer-content">
+        <h2>InnovateHive</h2>
+        <p>© 2025 InnovateHive. All rights reserved.</p>
+        <div class="footer-nav">
+          <a href="/#home">Home</a>
+          <a href="#benefits">Benefits</a>
+          <a href="/#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="/#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Toggle mobile menu
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        const navItems = document.querySelectorAll(".nav-links li a");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (window.innerWidth <= 767) {
+              navLinks.classList.remove("active");
+            }
+          });
+        });
+
+        // Make navbar sticky and add scroll effects
+        const header = document.querySelector("header");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+          } else {
+            header.classList.remove("header-scrolled");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
