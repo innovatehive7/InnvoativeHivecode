@@ -308,7 +308,7 @@
         const blogUrls = {
           1: "/om",
           2: "/gurbani",
-          3: "/sahil",
+          3: "/sharv",
           4: "/blog/ai-transforming-digital-marketing",
           5: "/blog/data-driven-decision-making",
           6: "/blog/modern-website-app-designs",
@@ -578,6 +578,35 @@
             menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
           });
         });
+      });
+    </script>
+    <script>
+      // Add this JavaScript to prevent any default touch behaviors
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          // Allow scrolling only in specific elements
+          const scrollableElements = document.querySelectorAll(
+            ".hero, .about-section, .services, .features, .blog, .contact-section, .map-section, .footer"
+          );
+
+          let isScrollable = false;
+          scrollableElements.forEach((el) => {
+            if (el.contains(e.target)) {
+              isScrollable = true;
+            }
+          });
+
+          if (!isScrollable) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent zooming
+      document.addEventListener("gesturestart", function (e) {
+        e.preventDefault();
       });
     </script>
   </body>
