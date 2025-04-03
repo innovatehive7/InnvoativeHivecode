@@ -423,7 +423,7 @@
       </div>
     </div>
 
-    <script>
+       <script>
       // Toggle mobile menu
       document
         .querySelector(".menu-toggle")
@@ -458,20 +458,6 @@
       // Prevent zooming
       document.addEventListener("gesturestart", function (e) {
         e.preventDefault();
-      });
-
-      // Make navbar sticky and add scroll effects
-      document.addEventListener("DOM
-      ContentLoaded", function () {
-        const header = document.querySelector("header");
-
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 50) {
-            header.classList.add("header-scrolled");
-          } else {
-            header.classList.remove("header-scrolled");
-          }
-        });
       });
     </script>
   </body>
