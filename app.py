@@ -125,7 +125,7 @@ def cloud():
 
 @app.route('/ai_assistant_development')
 def ai_assistant():
-    return render_template('Ai_Assistant_Development.html')
+    return render_template('AI_Assistant_Development.html')
 
 # All Blogs Page
 @app.route('/all_blogs')
