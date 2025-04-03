@@ -2,9 +2,6 @@ from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import json
 from datetime import datetime
 
 # Load environment variables
@@ -22,46 +19,6 @@ app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASS')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER')
 
 mail = Mail(app)
-
-def get_google_sheet():
-    try:
-        print("Attempting to authorize with Google...")
-        creds_json = json.loads(os.getenv('GOOGLE_CREDENTIALS'))
-        
-        # Verify required fields
-        required_keys = ['type', 'project_id', 'private_key', 'client_email']
-        if not all(k in creds_json for k in required_keys):
-            raise ValueError("Missing required credential fields")
-            
-        scope = [
-            'https://spreadsheets.google.com/feeds',
-            'https://www.googleapis.com/auth/drive'
-        ]
-        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
-        client = gspread.authorize(creds)
-        
-        sheet_name = os.getenv('GOOGLE_SHEET_NAME')
-        print(f"Looking for sheet: {sheet_name}")
-        
-        try:
-            sheet = client.open(sheet_name).sheet1
-            print("Successfully accessed sheet!")
-            return sheet
-        except gspread.SpreadsheetNotFound:
-            print(f"Sheet '{sheet_name}' not found! Creating new...")
-            sheet = client.create(sheet_name)
-            # Add headers
-            sheet.sheet1.append_row([
-                'Timestamp', 'Name', 'Email', 'Phone', 
-                'Service', 'Goal', 'Budget', 'Message', 
-                'IP Address', 'User Agent'
-            ])
-            sheet.share(creds_json['client_email'], perm_type='user', role='writer')
-            return sheet.sheet1
-            
-    except Exception as e:
-        print(f"Google Sheets Error: {str(e)}")
-        return None
 
 # Main page
 @app.route('/')
@@ -91,25 +48,6 @@ def handle_contact():
         budget = data.get('budget', '').strip()
         message = data.get('message', '').strip()
 
-        # Save to Google Sheets
-        sheet = get_google_sheet()
-        if not sheet:
-            raise Exception("Could not access Google Sheets")
-            
-        sheet.append_row([
-            timestamp,
-            name,
-            email,
-            phone,
-            service,
-            goal,
-            budget,
-            message,
-            request.remote_addr,
-            request.headers.get('User-Agent', 'Unknown')
-        ])
-        print("Data successfully written to Google Sheets")
-
         # Send email
         try:
             msg = Message(
@@ -129,11 +67,16 @@ def handle_contact():
 
             Timestamp: {timestamp}
             IP Address: {request.remote_addr}
+            User Agent: {request.headers.get('User-Agent', 'Unknown')}
             """
             mail.send(msg)
-            print("Email notification sent")
+            print("Email notification sent successfully")
         except Exception as e:
             print(f"Email sending failed: {e}")
+            return jsonify({
+                'status': 'error',
+                'message': 'Failed to send email. Please try again later.'
+            }), 500
 
         return jsonify({
             'status': 'success',
