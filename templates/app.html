@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Design - InnovateHive</title>
-      <style>
+    <style>
       /* Reset and Base Styles */
       * {
         box-sizing: border-box;
@@ -221,6 +221,15 @@
         font-size: 1.5rem;
         color: white;
         padding: 5px;
+        background: transparent; /* Add this */
+        border: none; /* Remove default button border */
+      }
+
+      /* Add this to remove any potential focus/hover effects */
+      .menu-toggle:hover,
+      .menu-toggle:focus {
+        background: transparent;
+        outline: none;
       }
 
       /* Tablet Styles */
@@ -294,6 +303,8 @@
       @media (max-width: 767px) {
         .menu-toggle {
           display: block;
+          background: no-repeat;
+          border: none;
         }
 
         .nav-links {
