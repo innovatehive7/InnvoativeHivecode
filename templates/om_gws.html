@@ -17,12 +17,27 @@
     />
     <style>
       /* General Styles */
-      body {
+      * {
+        box-sizing: border-box;
         margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      body {
         font-family: "Arial", sans-serif;
         background-color: #f9f9f9;
         color: #333;
         line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
       /* Header */
@@ -30,9 +45,12 @@
         background-color: #004466;
         padding: 15px 30px;
         color: white;
-        height: 50px;
+        height: auto;
         display: flex;
         align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
       }
 
       .navbar {
@@ -40,28 +58,29 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        flex-wrap: wrap;
       }
 
       .logo-container {
         display: flex;
         align-items: center;
-        gap: 10px; /* Adjust the gap between the logo and the name */
+        gap: 10px;
       }
 
       .logo img {
-        height: 70px; /* Adjust the height of the logo as needed */
-        width: auto; /* Maintain aspect ratio */
+        height: 50px;
+        width: auto;
       }
 
       h1 {
-        margin: 0; /* Remove default margin for better alignment */
-        font-size: 24px; /* Adjust font size as needed */
+        margin: 0;
+        font-size: 24px;
       }
 
       .nav-links {
         list-style: none;
         display: flex;
-        gap: 20px;
+        gap: 15px;
         padding: 0;
         margin: 0;
       }
@@ -69,8 +88,9 @@
       .nav-links li a {
         color: white;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
         padding: 8px;
+        white-space: nowrap;
       }
 
       .nav-links li a:hover {
@@ -78,65 +98,87 @@
         border-radius: 4px;
       }
 
+      /* Mobile Menu Toggle */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
       /* Blog Section */
       .blog-section {
-        padding: 50px 20px;
+        padding: 30px 15px;
         max-width: 1200px;
         margin: 0 auto;
+        width: 100%;
+        flex: 1;
       }
 
       .blog-section h1 {
-        font-size: 48px;
+        font-size: 2rem;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        color: #004466;
+        line-height: 1.2;
       }
 
       .blog-section .subtitle {
-        font-size: 18px;
+        font-size: 1rem;
         text-align: center;
         color: #666;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
       }
 
       .blog-post {
         background: white;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .blog-post:hover {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       }
 
       .blog-image img {
         width: 100%;
-        height: 300px;
+        height: auto;
+        max-height: 400px;
         object-fit: cover;
       }
 
       .blog-content {
-        padding: 30px;
+        padding: 20px;
       }
 
       .blog-content h2 {
-        font-size: 32px;
+        font-size: 1.5rem;
         margin-bottom: 10px;
+        color: #004466;
+        line-height: 1.3;
       }
 
       .blog-content h3 {
-        font-size: 24px;
+        font-size: 1.3rem;
         margin-top: 20px;
         margin-bottom: 10px;
+        color: #065a77;
+      }
+
+      .blog-content h4 {
+        font-size: 1.1rem;
+        margin-top: 15px;
+        margin-bottom: 8px;
+        color: #065a77;
       }
 
       .blog-content .meta {
-        font-size: 14px;
+        font-size: 0.9rem;
         color: #666;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
       }
 
       .blog-content .author {
@@ -145,9 +187,9 @@
       }
 
       .blog-content p {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 20px;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
       }
 
       .blog-content ul {
@@ -165,25 +207,53 @@
         margin-top: 20px;
       }
 
-      .blog-content .social-links {
-        margin-top: 20px;
-      }
-
-      .blog-content .social-link {
+      .blog-content .linkedin-link {
         display: inline-block;
-        margin-right: 15px;
+        margin-top: 15px;
         color: #065a77;
         text-decoration: none;
         font-weight: bold;
         transition: color 0.3s ease;
       }
 
-      .blog-content .social-link:hover {
+      .blog-content .linkedin-link:hover {
         color: #00bfff;
       }
 
-      .blog-content .social-link i {
-        margin-right: 10px;
+      .blog-content .linkedin-link i {
+        margin-right: 8px;
+      }
+
+      .key-takeaways {
+        background-color: #f0f8ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 25px;
+      }
+
+      .key-takeaways h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      .key-takeaways ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .key-takeaways li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .key-takeaways li:before {
+        content: "•";
+        color: #004466;
+        font-weight: bold;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
       }
 
       /* Footer */
@@ -192,6 +262,16 @@
         color: white;
         text-align: center;
         padding: 20px;
+        width: 100%;
+      }
+
+      .footer h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
       }
 
       .footer .social-links {
@@ -226,22 +306,95 @@
       }
 
       /* Responsive Design */
-      @media (max-width: 768px) {
-        header .nav-links {
-          flex-direction: column;
-          gap: 10px;
-        }
-
+      @media (max-width: 992px) {
         .blog-section h1 {
-          font-size: 36px;
+          font-size: 1.8rem;
         }
 
         .blog-content h2 {
-          font-size: 28px;
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 15px;
         }
 
-        .blog-image img {
-          height: 200px;
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo-container {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 15px;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li {
+          width: 100%;
+          padding: 5px 0;
+        }
+
+        .blog-section {
+          padding: 20px 10px;
+        }
+
+        .blog-section h1 {
+          font-size: 1.5rem;
+        }
+
+        .blog-content {
+          padding: 15px;
+        }
+
+        .blog-content h2 {
+          font-size: 1.2rem;
+        }
+
+        .blog-content h3 {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo img {
+          height: 40px;
+        }
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        .blog-section h1 {
+          font-size: 1.3rem;
+        }
+
+        .blog-section .subtitle {
+          font-size: 0.9rem;
+        }
+
+        .blog-content .meta {
+          font-size: 0.8rem;
+        }
+
+        .blog-content p {
+          font-size: 0.9rem;
         }
       }
     </style>
@@ -251,25 +404,24 @@
     <header>
       <nav class="navbar">
         <div class="logo-container">
-          <div class="logo animate-slide-in-left">
+          <div class="logo">
             <img
               src="{{ url_for('static', filename='img/LOGO_1.png') }}"
-              alt="SEO Benefits"
+              alt="InnovateHive Logo"
             />
           </div>
-          <h1 class="animate-slide-in-left">InnovateHive</h1>
+          <h1>InnovateHive</h1>
+          <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
         </div>
-        <ul class="nav-links">
-          <li><a href="/#home" class="animate-slide-in-left">Home</a></li>
-          <li><a href="/#about" class="animate-slide-in-left">About</a></li>
-          <li>
-            <a href="/#services" class="animate-slide-in-left">Services</a>
-          </li>
-          <li>
-            <a href="/#features" class="animate-slide-in-left">Features</a>
-          </li>
-          <li><a href="/#blog" class="animate-slide-in-left">Blog</a></li>
-          <li><a href="/#contact" class="animate-slide-in-left">Contact</a></li>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#blog">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -401,13 +553,29 @@
 
     <!-- Scripts -->
     <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("active");
+        });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document.getElementById("nav-links").classList.remove("active");
+        });
+      });
+
       // Add smooth scrolling to all links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
+          if (this.getAttribute("href") !== "#") {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }
         });
       });
 
@@ -422,12 +590,26 @@
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.2 }
       );
 
       blogPosts.forEach((post) => {
         observer.observe(post);
       });
+
+      // Prevent horizontal scrolling
+      window.addEventListener("scroll", function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      });
+
+      // Reset scroll position on load
+      window.onload = function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      };
     </script>
   </body>
 </html>
