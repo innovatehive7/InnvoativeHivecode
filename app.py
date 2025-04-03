@@ -101,7 +101,7 @@ def graphic():
 
 @app.route('/video_editing')
 def video_editing():
-    return render_template('Video_editing.html')
+    return render_template('Video_Editing.html')
 
 @app.route('/content')
 def content():
