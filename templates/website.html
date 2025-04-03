@@ -2,8 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Video Editing - InnovateHive</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Website Design - InnovateHive</title>
     <style>
       /* Reset and Base Styles */
       * {
@@ -12,7 +15,8 @@
         padding: 0;
       }
 
-      html, body {
+      html,
+      body {
         width: 100%;
         overflow-x: hidden; /* Prevent horizontal scrolling */
       }
@@ -96,7 +100,9 @@
         padding-bottom: 80px; /* Space for footer */
       }
 
-      h1, h2, h3 {
+      h1,
+      h2,
+      h3 {
         margin-bottom: 15px;
         color: #004466;
       }
@@ -257,7 +263,8 @@
           font-size: 1.5rem;
         }
 
-        p, .content ul li {
+        p,
+        .content ul li {
           font-size: 1.125rem;
         }
       }
@@ -310,7 +317,7 @@
         <ul class="nav-links">
           <li><a href="/#home">Home</a></li>
           <li><a href="#benefits">Benefits</a></li>
-          <li><a href="/#services">Services</a></li>
+          <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -319,46 +326,47 @@
 
     <!-- Content Section -->
     <div class="container">
-      <!-- Video Editing Section -->
-      <section id="video-editing" class="section">
+      <h1>Website Design</h1>
+      <p>
+        Create visually appealing, user-friendly websites that enhance brand
+        identity and drive business success.
+      </p>
+
+      <section id="benefits" class="section">
         <div class="content">
-          <h2>Video Editing 🎥</h2>
+          <h2>Key Benefits</h2>
+          <h3>First Impressions Matter</h3>
+          <p>Professional designs build trust and credibility.</p>
+          <h3>Enhanced User Experience (UX)</h3>
           <p>
-            Produce high-quality, engaging videos to boost brand awareness and
-            customer retention.
+            Intuitive navigation, fast loading speeds, and engaging layouts.
           </p>
-          <h3>Key Benefits</h3>
-          <ul>
-            <li>
-              <strong>Stronger Brand Messaging –</strong> Professional edits
-              with seamless transitions and visual effects.
-            </li>
-            <li>
-              <strong>Higher Engagement –</strong> Captivating storytelling that
-              keeps audiences hooked.
-            </li>
-            <li>
-              <strong>Optimized for Various Platforms –</strong> Videos are
-              customized for YouTube with engaging thumbnails and SEO-optimized
-              titles, formatted for social media with attention-grabbing short
-              clips, and tailored for corporate use with professional branding
-              and clear messaging.
-            </li>
-          </ul>
-          <h3>Services 🎬</h3>
-          <ul>
-            <li>Corporate & Marketing Video Editing</li>
-            <li>Social Media & YouTube Content Creation</li>
-            <li>Event Highlights, Explainer Videos & Product Showcases</li>
-          </ul>
+          <h3>Mobile-Responsive</h3>
+          <p>Optimized for seamless functionality on all devices.</p>
+          <h3>SEO-Friendly</h3>
+          <p>Built-in SEO strategies for higher search rankings.</p>
         </div>
         <img
-          src="{{ url_for('static', filename='img/V-4.jpg') }}"
-          alt="Video Editing Services"
+          src="{{ url_for('static', filename='img/WB-1.jpg') }}"
+          alt="Website Design Benefits"
         />
       </section>
 
-      <!-- Process Section -->
+      <section id="services" class="section">
+        <div class="content">
+          <h2>Services</h2>
+          <ul>
+            <li>Custom Website & E-Commerce Design</li>
+            <li>Landing Pages, WordPress, UI/UX Optimization</li>
+            <li>Website Redesign, Maintenance & Support</li>
+          </ul>
+        </div>
+        <img
+          src="{{ url_for('static', filename='img/WB_2.jpg') }}"
+          alt="Website Services"
+        />
+      </section>
+
       <section id="process" class="section">
         <div class="content">
           <h2>Our Process ⚙️</h2>
@@ -394,10 +402,9 @@
         </div>
         <img
           src="{{ url_for('static', filename='img/flow.jpg') }}"
-          alt="Video Production Process"
+          alt="Development Process"
         />
       </section>
-
       <a href="/#contact" class="cta-button">Create Project with Us</a>
     </div>
 
@@ -407,54 +414,50 @@
         <h2>InnovateHive</h2>
         <p>© 2025 InnovateHive. All rights reserved.</p>
         <div class="footer-nav">
-          <a href="/#home">Home</a>
+          <a href="#home">Home</a>
           <a href="#benefits">Benefits</a>
-          <a href="/#services">Services</a>
+          <a href="#services">Services</a>
           <a href="#process">Process</a>
-          <a href="/#contact">Contact</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </div>
 
     <script>
       // Toggle mobile menu
-      document.querySelector('.menu-toggle').addEventListener('click', function() {
-        document.querySelector('.nav-links').classList.toggle('active');
-      });
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          document.querySelector(".nav-links").classList.toggle("active");
+        });
 
       // Close mobile menu when clicking a link
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-          document.querySelector('.nav-links').classList.remove('active');
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document.querySelector(".nav-links").classList.remove("active");
         });
       });
 
       // Prevent horizontal scrolling
-      document.addEventListener('touchmove', function(e) {
-        if (e.touches.length === 1) {
-          const touch = e.touches[0];
-          if (touch.clientX <= 10 || touch.clientX >= window.innerWidth - 10) {
-            e.preventDefault();
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.touches.length === 1) {
+            const touch = e.touches[0];
+            if (
+              touch.clientX <= 10 ||
+              touch.clientX >= window.innerWidth - 10
+            ) {
+              e.preventDefault();
+            }
           }
-        }
-      }, { passive: false });
+        },
+        { passive: false }
+      );
 
       // Prevent zooming
-      document.addEventListener('gesturestart', function(e) {
+      document.addEventListener("gesturestart", function (e) {
         e.preventDefault();
-      });
-
-      // Make navbar sticky and add scroll effects
-      document.addEventListener("DOMContentLoaded", function () {
-        const header = document.querySelector("header");
-
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 50) {
-            header.classList.add("header-scrolled");
-          } else {
-            header.classList.remove("header-scrolled");
-          }
-        });
       });
     </script>
   </body>
