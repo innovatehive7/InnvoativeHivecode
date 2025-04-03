@@ -553,5 +553,32 @@
         });
       });
     </script>
+
+    <script>
+      // Mobile menu toggle
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.createElement("div");
+        menuToggle.className = "menu-toggle";
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        document.querySelector(".navbar").appendChild(menuToggle);
+
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
+          menuToggle.innerHTML = navLinks.classList.contains("active")
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          });
+        });
+      });
+    </script>
   </body>
 </html>
