@@ -4,32 +4,7 @@ body {
   background-color: white;
 }
 
-/* Make navbar sticky */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Ensures navbar stays above other content */
-  /* Your existing header styles */
-  background-color: #004466;
-  padding: 15px 30px;
-  color: white;
-  height: 50px;
-  display: flex;
-  align-items: center;
-}
-
-/* Optional: Add shadow when scrolling */
-.header-scrolled {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: white;
-}
-
-/* Make navbar sticky */
+/* Navbar Styles */
 header {
   position: sticky;
   top: 0;
@@ -75,6 +50,8 @@ h1 {
   gap: 20px;
   padding: 0;
   margin: 0;
+  position: relative;
+  left: 300px;
 }
 
 .nav-links li a {
@@ -82,8 +59,6 @@ h1 {
   text-decoration: none;
   font-size: 18px;
   padding: 8px;
-  position: relative;
-  left: 350px;
 }
 
 .nav-links li a:hover {
@@ -91,6 +66,7 @@ h1 {
   border-radius: 4px;
 }
 
+/* Hero Section */
 .hero {
   position: relative;
   height: 80vh;
@@ -125,17 +101,6 @@ h1 {
   height: 400px;
 }
 
-.hero-content-box h1 {
-  font-size: 70px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.hero-content-box p {
-  font-size: 25px;
-  text-align: left;
-}
-/* Hero Section Styles */
 .hero-content-box h1 {
   font-size: 70px;
   margin-bottom: 10px;
@@ -188,6 +153,7 @@ h1 {
   display: inline-block;
 }
 
+/* About Section */
 .about-section {
   display: flex;
   align-items: center;
@@ -235,6 +201,7 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Services Section */
 .services {
   padding: 4%;
   text-align: center;
@@ -245,6 +212,7 @@ h1 {
   margin-bottom: 20px;
   color: #004466;
 }
+
 .services h2::after {
   content: "";
   display: block;
@@ -304,6 +272,7 @@ h1 {
   color: inherit;
 }
 
+/* Features Section */
 .features {
   padding: 50px;
   background-color: white;
@@ -358,6 +327,7 @@ h1 {
   color: #555;
 }
 
+/* Blog Section */
 .blog {
   padding: 50px;
   text-align: center;
@@ -369,6 +339,7 @@ h1 {
   text-align: center;
   color: #004466;
 }
+
 .blog h1::after {
   content: "";
   display: block;
@@ -409,6 +380,7 @@ h1 {
 .blog-box:hover {
   background-color: #ddd;
 }
+
 .read-more {
   color: #666;
   font-size: 0.9rem;
@@ -464,7 +436,7 @@ h1 {
   transform: translateY(3px);
 }
 
-/* Contact Section Styles */
+/* Contact Section */
 .contact-section {
   padding: 100px 20px;
   background-color: #f3f4f6;
@@ -674,6 +646,7 @@ h1 {
   border: none;
 }
 
+/* Footer */
 .footer {
   background-color: #004466;
   color: white;
@@ -711,6 +684,7 @@ h1 {
   text-decoration: underline;
 }
 
+/* Animations */
 .spinner {
   display: inline-block;
   width: 18px;
@@ -729,7 +703,6 @@ h1 {
   }
 }
 
-/* Animation Classes */
 .animate-slide-in-left {
   animation: slideInLeft 0.8s ease-out forwards;
   opacity: 0;
@@ -756,36 +729,28 @@ h1 {
 .delay-1 {
   animation-delay: 0.2s;
 }
-
 .delay-2 {
   animation-delay: 0.4s;
 }
-
 .delay-3 {
   animation-delay: 0.6s;
 }
-
 .delay-4 {
   animation-delay: 0.8s;
 }
-
 .delay-5 {
   animation-delay: 1s;
 }
-
 .delay-6 {
   animation-delay: 1.2s;
 }
-
 .delay-7 {
   animation-delay: 1.4s;
 }
-
 .delay-8 {
   animation-delay: 1.6s;
 }
 
-/* Keyframes */
 @keyframes slideInLeft {
   to {
     opacity: 1;
@@ -828,11 +793,9 @@ h1 {
 .service-row:nth-child(1) {
   animation-delay: 0.2s;
 }
-
 .service-row:nth-child(2) {
   animation-delay: 0.6s;
 }
-
 .service-row:nth-child(3) {
   animation-delay: 1s;
 }
@@ -843,11 +806,9 @@ h1 {
     right: 300px;
     height: 350px;
   }
-
   .hero-content-box h1 {
     font-size: 60px;
   }
-
   .hero-content-box p {
     font-size: 22px;
   }
@@ -859,43 +820,46 @@ h1 {
     width: 400px;
     height: 300px;
   }
-
   .hero-content-box h1 {
     font-size: 50px;
   }
-
   .hero-content-box p {
     font-size: 20px;
   }
-
   .about-section {
     flex-direction: column;
     padding: 30px;
   }
-
   .about-content,
   .about-image {
     width: 100%;
   }
-
   .about-image {
-    margin-top: 30px;
+    width: 50%; /* Smaller image on tablet */
+    margin: 20px auto 0;
   }
-
+  .about-image img {
+    max-width: 100%;
+    height: auto;
+  }
   .service-box {
-    width: calc(50% - 20px);
+    width: calc(50% - 20px); /* Two services per row */
+    max-width: none;
   }
-
+  .service-container {
+    justify-content: center; /* Center services */
+    left: 0;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
   .blog-box {
     width: 45%;
   }
-
-  /* Responsive Navbar - Keep original style */
   .navbar {
     position: relative;
     padding: 15px 30px;
   }
-
   .nav-links {
     display: none;
     width: 100%;
@@ -907,13 +871,11 @@ h1 {
     padding: 20px 0;
     z-index: 999;
   }
-
   .nav-links.active {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
-
   .menu-toggle {
     display: block;
     position: absolute;
@@ -933,42 +895,40 @@ h1 {
     width: 80%;
     margin: 0 auto;
     height: auto;
+    right: 0;
   }
-
   .hero-content-box h1 {
     font-size: 40px;
   }
-
   .hero-content-box p {
     font-size: 18px;
   }
-
-  .service-box {
-    width: 100%;
-    max-width: 350px;
+  .about-image {
+    width: 80%; /* Smaller image on mobile */
   }
-
   .features-container {
     flex-direction: column;
     align-items: center;
   }
-
   .feature-box {
     width: 100%;
     max-width: 350px;
   }
-
   .blog-box {
     width: 100%;
     max-width: 350px;
   }
-
   .contact-form-container {
     padding: 30px;
   }
-
   .form-row {
     flex-direction: column;
+  }
+  /* Prevent zooming on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 }
 
@@ -976,91 +936,75 @@ h1 {
   header {
     padding: 10px 15px;
   }
-
   .hero {
     height: 60vh;
   }
-
   .hero-content-box {
     width: 90%;
     padding: 20px;
   }
-
   .hero-content-box h1 {
     font-size: 32px;
   }
-
   .hero-content-box p {
     font-size: 16px;
   }
-
   .about-section,
   .services,
   .features,
   .blog {
     padding: 30px 15px;
   }
-
+  .about-image {
+    width: 90%; /* Even smaller image on very small screens */
+  }
+  .service-box {
+    width: 100%; /* Single column on small mobile */
+    max-width: 350px;
+  }
   .contact-section {
     padding: 50px 15px;
   }
-
   .contact-form-container {
     padding: 20px;
   }
-
   .footer-nav {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-
   .footer-nav a {
     margin: 0;
   }
 }
 
-/* Mobile Landscape */
+/* Special cases */
 @media (max-height: 500px) and (orientation: landscape) {
   .hero {
     height: 120vh;
   }
 }
 
-/* Tablet Portrait */
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
   .hero-content-box {
     right: 100px;
   }
 }
 
-/* iPad Pro */
 @media (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) {
   .hero-content-box {
     right: 300px;
   }
 }
 
-/* Very small devices (phones, 360px and down) */
 @media (max-width: 360px) {
   .hero-content-box h1 {
     font-size: 28px;
   }
-
   .service-box h3 {
     font-size: 1.2em;
   }
-
   .service-box p {
     font-size: 1em;
-  }
-}
-
-/* Prevent zooming on input focus on mobile */
-@media (max-width: 768px) {
-  input,
-  select,
-  textarea {
-    font-size: 16px !important;
   }
 }
