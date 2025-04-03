@@ -53,6 +53,7 @@
           <li><a href="#blog" class="animate-slide-in-left">Blog</a></li>
           <li><a href="#contact" class="animate-slide-in-left">Contact</a></li>
         </ul>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
       </nav>
     </header>
 
@@ -283,65 +284,6 @@
       <h1 class="font-poppins">BLOGS</h1>
       <div class="container" id="blogContainer"></div>
       <a href="/all_blogs" class="more-btn font-open-sans">More Blogs ▼</a>
-      <script>
-        const blogTitles = {
-          1: "Amazon Web Services (AWS): The Ultimate Cloud Computing Platform",
-          2: "Welcome to the Cloud – No Umbrella Required",
-          3: "The Rise of AI in Cybersecurity: Boon or Bane?",
-          4: "How AI is Transforming Digital Marketing",
-          5: "Data-Driven Decision Making: The Secret Weapon for Smart Businesses",
-          6: "How Modern Website & App Designs Impact User Engagement and Growth",
-          7: "Data Analysis: The Driving Force Behind Industry Transformation ",
-          8: "From Memes to Millions: How Digital Marketing Runs the Modern Business Circus",
-          9: "Unlocking the Potential of Visual Storytelling: Why Quality Content Matters",
-          10: "The Power of Visual Storytelling: My Journey in Photography and Cinematic Videos ",
-          11: "Digital Marketing: The Key to Success in Modern Business World ",
-          12: "How AI is Transforming Digital Marketing",
-        };
-
-        const blogThumbnails = {
-          1: "{{ url_for('static', filename='img/Blogs/Om Ghorpade/1.png') }}",
-          2: "{{ url_for('static', filename='img/Blogs/Gurbani/1.png') }}",
-          3: "{{ url_for('static', filename='img/Blogs/Sharv/1.png') }}",
-          4: "{{ url_for('static', filename='img/Blogs/Siddhi/1.png') }}",
-          5: "{{ url_for('static', filename='img/Blogs/Ajinkya/1.png') }}",
-          6: "{{ url_for('static', filename='img/Blogs/Anurag/1.png') }}",
-          7: "{{ url_for('static', filename='img/Blogs/Dhanashri/1.png') }}",
-          8: "{{ url_for('static', filename='img/Blogs/Nupur/1.png') }}",
-          9: "{{ url_for('static', filename='img/Blogs/Om Gws/1.png') }}",
-          10: "{{ url_for('static', filename='img/Blogs/Om Shahu/1.png') }}",
-          11: "{{ url_for('static', filename='img/Blogs/Sahil D/1.png') }}",
-          12: "{{ url_for('static', filename='img/Blogs/Anuja/1.png') }}",
-        };
-
-        const blogUrls = {
-          1: "/om",
-          2: "/gurbani",
-          3: "/sharv",
-          4: "/blog/ai-transforming-digital-marketing",
-          5: "/blog/data-driven-decision-making",
-          6: "/blog/modern-website-app-designs",
-          7: "/blog/data-analysis-industry-transformation",
-          8: "/blog/digital-marketing-modern-business",
-          9: "/blog/visual-storytelling-quality-content",
-          10: "/blog/power-of-visual-storytelling",
-          11: "/blog/digital-marketing-key-to-success",
-          12: "/blog/ai-transforming-digital-marketing",
-        };
-
-        document.addEventListener("DOMContentLoaded", function () {
-          const blogContainer = document.getElementById("blogContainer");
-          for (let i = 1; i <= 3; i++) {
-            blogContainer.innerHTML += `
-          <a href="${blogUrls[i]}" class="blog-box">
-            <img src="${blogThumbnails[i]}" alt="${blogTitles[i]} Thumbnail" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;" />
-            <h3 class="font-poppins">${blogTitles[i]}</h3>
-            <p class="font-open-sans">Click to view more...</p>
-          </a>
-        `;
-          }
-        });
-      </script>
     </section>
 
     <!-- Contact Section -->
@@ -491,6 +433,99 @@
     <!-- Scripts -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
+          this.innerHTML = navLinks.classList.contains("active")
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          });
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("header-scrolled");
+          } else {
+            header.classList.remove("header-scrolled");
+          }
+        });
+      });
+    </script>
+    <script>
+      const blogTitles = {
+        1: "Amazon Web Services (AWS): The Ultimate Cloud Computing Platform",
+        2: "Welcome to the Cloud – No Umbrella Required",
+        3: "The Rise of AI in Cybersecurity: Boon or Bane?",
+        4: "How AI is Transforming Digital Marketing",
+        5: "Data-Driven Decision Making: The Secret Weapon for Smart Businesses",
+        6: "How Modern Website & App Designs Impact User Engagement and Growth",
+        7: "Data Analysis: The Driving Force Behind Industry Transformation ",
+        8: "From Memes to Millions: How Digital Marketing Runs the Modern Business Circus",
+        9: "Unlocking the Potential of Visual Storytelling: Why Quality Content Matters",
+        10: "The Power of Visual Storytelling: My Journey in Photography and Cinematic Videos ",
+        11: "Digital Marketing: The Key to Success in Modern Business World ",
+        12: "How AI is Transforming Digital Marketing",
+      };
+
+      const blogThumbnails = {
+        1: "{{ url_for('static', filename='img/Blogs/Om Ghorpade/1.png') }}",
+        2: "{{ url_for('static', filename='img/Blogs/Gurbani/1.png') }}",
+        3: "{{ url_for('static', filename='img/Blogs/Sharv/1.png') }}",
+        4: "{{ url_for('static', filename='img/Blogs/Siddhi/1.png') }}",
+        5: "{{ url_for('static', filename='img/Blogs/Ajinkya/1.png') }}",
+        6: "{{ url_for('static', filename='img/Blogs/Anurag/1.png') }}",
+        7: "{{ url_for('static', filename='img/Blogs/Dhanashri/1.png') }}",
+        8: "{{ url_for('static', filename='img/Blogs/Nupur/1.png') }}",
+        9: "{{ url_for('static', filename='img/Blogs/Om Gws/1.png') }}",
+        10: "{{ url_for('static', filename='img/Blogs/Om Shahu/1.png') }}",
+        11: "{{ url_for('static', filename='img/Blogs/Sahil D/1.png') }}",
+        12: "{{ url_for('static', filename='img/Blogs/Anuja/1.png') }}",
+      };
+
+      const blogUrls = {
+        1: "/om",
+        2: "/gurbani",
+        3: "/sharv",
+        4: "/blog/ai-transforming-digital-marketing",
+        5: "/blog/data-driven-decision-making",
+        6: "/blog/modern-website-app-designs",
+        7: "/blog/data-analysis-industry-transformation",
+        8: "/blog/digital-marketing-modern-business",
+        9: "/blog/visual-storytelling-quality-content",
+        10: "/blog/power-of-visual-storytelling",
+        11: "/blog/digital-marketing-key-to-success",
+        12: "/blog/ai-transforming-digital-marketing",
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const blogContainer = document.getElementById("blogContainer");
+        for (let i = 1; i <= 3; i++) {
+          blogContainer.innerHTML += `
+            <a href="${blogUrls[i]}" class="blog-box">
+              <img src="${blogThumbnails[i]}" alt="${blogTitles[i]} Thumbnail" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;" />
+              <h3 class="font-poppins">${blogTitles[i]}</h3>
+              <p class="font-open-sans">Click to view more...</p>
+            </a>
+          `;
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
         const contactForm = document.getElementById("contactForm");
 
         contactForm.addEventListener("submit", async function (e) {
@@ -547,54 +582,6 @@
         });
       });
     </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const header = document.querySelector("header");
-
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 50) {
-            header.classList.add("header-scrolled");
-          } else {
-            header.classList.remove("header-scrolled");
-          }
-        });
-      });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.createElement("div");
-        menuToggle.className = "menu-toggle";
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        document.querySelector(".navbar").appendChild(menuToggle);
-
-        const navLinks = document.querySelector(".nav-links");
-
-        menuToggle.addEventListener("click", function () {
-          navLinks.classList.toggle("active");
-          menuToggle.innerHTML = navLinks.classList.contains("active")
-            ? '<i class="fas fa-times"></i>'
-            : '<i class="fas fa-bars"></i>';
-        });
-
-        document.querySelectorAll(".nav-links a").forEach((link) => {
-          link.addEventListener("click", function () {
-            navLinks.classList.remove("active");
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-          });
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("touchmove", function (e) {}, {
-        passive: true,
-      });
-
-      document.addEventListener("gesturestart", function (e) {
-        e.preventDefault();
-      });
-    </script>
-
     <!-- Google Analytics -->
     <script
       async
