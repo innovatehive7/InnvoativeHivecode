@@ -113,7 +113,7 @@ def seo():
 
 @app.route('/business_analysis')
 def business_analysis():
-    return render_template('Business_analysis.html')
+    return render_template('Business_Analysis.html')
 
 @app.route('/app')
 def app_design():
