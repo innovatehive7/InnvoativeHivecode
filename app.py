@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
@@ -20,6 +20,11 @@ app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER')
 
 mail = Mail(app)
 
+# ✅ Sitemap route
+@app.route('/sitemap.xml')
+def serve_sitemap():
+    return send_file("sitemap.xml", mimetype="application/xml")
+
 # Main page
 @app.route('/')
 def index():
@@ -31,14 +36,9 @@ def handle_contact():
     try:
         data = request.get_json()
         
-        # Validate required fields
         if not data.get('name') or not data.get('email') or not data.get('message'):
-            return jsonify({
-                'status': 'error',
-                'message': 'Name, email, and message are required'
-            }), 400
+            return jsonify({'status': 'error', 'message': 'Name, email, and message are required'}), 400
 
-        # Prepare data
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         name = data.get('name', '').strip()
         email = data.get('email', '').strip()
@@ -48,7 +48,6 @@ def handle_contact():
         budget = data.get('budget', '').strip()
         message = data.get('message', '').strip()
 
-        # Send email
         try:
             msg = Message(
                 "New Contact Form Submission - InnovateHive",
@@ -70,25 +69,13 @@ def handle_contact():
             User Agent: {request.headers.get('User-Agent', 'Unknown')}
             """
             mail.send(msg)
-            print("Email notification sent successfully")
         except Exception as e:
-            print(f"Email sending failed: {e}")
-            return jsonify({
-                'status': 'error',
-                'message': 'Failed to send email. Please try again later.'
-            }), 500
+            return jsonify({'status': 'error', 'message': 'Failed to send email. Please try again later.'}), 500
 
-        return jsonify({
-            'status': 'success',
-            'message': 'Your message has been sent successfully!'
-        })
+        return jsonify({'status': 'success', 'message': 'Your message has been sent successfully!'})
 
     except Exception as e:
-        print(f"Error processing contact form: {e}")
-        return jsonify({
-            'status': 'error',
-            'message': 'An error occurred. Please try again later.'
-        }), 500
+        return jsonify({'status': 'error', 'message': 'An error occurred. Please try again later.'}), 500
 
 # Subpages (Services)
 @app.route('/website')
