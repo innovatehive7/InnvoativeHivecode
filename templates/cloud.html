@@ -5,206 +5,296 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cloud Technology - Innovethive</title>
     <style>
-         body {
-           font-family: Arial, sans-serif;
-           margin: 0;
-           padding: 0;
-           background-color: #f9f9f9;
-           color: #333;
-         }
+      /* Reset and Base Styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-         /* Header */
-         /* Make navbar sticky */
-         header {
-           position: sticky;
-           top: 0;
-           z-index: 1000; /* Ensures navbar stays above other content */
-           /* Your existing header styles */
-           background-color: #004466;
-           padding: 15px 30px;
-           color: white;
-           height: 50px;
-           display: flex;
-           align-items: center;
-         }
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
 
-         /* Optional: Add shadow when scrolling */
-         .header-scrolled {
-           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-         }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+        position: relative;
+        min-height: 100vh;
+      }
 
-         .navbar {
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           width: 100%;
-         }
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: #004466;
+        padding: 15px 30px;
+        color: white;
+        height: auto;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
-         .logo-container {
-           display: flex;
-           align-items: center;
-           gap: 10px;
-         }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+      }
 
-         .logo img {
-           height: 70px;
-           width: auto;
-         }
-         .logo-container h1 {
-           color: white; /* Change text color to white */
-           fon
-         }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-         h1 {
-           margin: 0;
-           font-size: 24px;
-           color: #004466;
-         }
+      .logo img {
+        height: 50px;
+        width: auto;
+        max-width: 100%;
+      }
 
-         .nav-links {
-           list-style: none;
-           display: flex;
-           gap: 20px;
-           padding: 0;
-           margin: 0;
-         }
+      .logo-container h1 {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0;
+      }
 
-         .nav-links li a {
-           color: white;
-           text-decoration: none;
-           font-size: 18px;
-           padding: 8px;
-         }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+        padding: 0;
+        margin: 0;
+      }
 
-         .nav-links li a:hover {
-           background-color: rgba(255, 255, 255, 0.2);
-           border-radius: 4px;
-         }
+      .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 8px;
+        white-space: nowrap;
+      }
 
-         .container {
-           width: 90%;
-           max-width: 1200px;
-           margin: 0 auto;
-           padding: 20px;
-         }
+      .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+      }
 
-         h1,
-         h2,
-         h3 {
-           margin-bottom: 10px;
-         }
+      /* Main Content */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        padding-bottom: 80px; /* Space for footer */
+      }
 
-         h1 {
-           font-size: 32px;
-           color: #004466;
-           margin:-12px/* Changed from #000 to #004466 */
-         }
+      h1,
+      h2,
+      h3 {
+        margin-bottom: 15px;
+        color: #004466;
+      }
 
-         h2 {
-           font-size:32px;
-           color: #004466;
-         }
+      h1 {
+        font-size: 2rem;
+        margin-top: 20px;
+      }
 
-         h3 {
-           font-size: 18px;
-           color: #004466;
-         }
+      h2 {
+        font-size: 1.75rem;
+      }
 
-         p {
-           font-size: 18px;
-           line-height: 1.6;
-         }
+      h3 {
+        font-size: 1.25rem;
+      }
 
-         .section {
-           display: flex;
-           align-items: center;
-           justify-content: space-between;
-           gap: 40px;
-           margin-bottom: 40px;
-         }
+      p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
 
-         .section img {
-           max-width: 100%;
-           width: 500px;
-           height: auto;
-           border-radius: 8px;
-           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-         }
+      .section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
 
-         .section:nth-child(even) .content {
-           order: 2;
-         }
+      .section img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-         .cta-button {
-           display: inline-block;
-           padding: 12px 24px;
-           background-color: #004466;
-           color: #fff;
-           text-decoration: none;
-           font-size: 16px;
-           font-weight: bold;
-           border-radius: 6px;
-           transition: background-color 0.3s ease;
-           margin-top: 20px;
-           text-align: center;
-           display: block;
-           width: fit-content;
-           margin-left: auto;
-           margin-right: auto;
-         }
+      .content {
+        width: 100%;
+      }
 
-         .cta-button:hover {
-           background-color: #0056b3;
-         }
+      .content ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+      }
 
-         @media (max-width: 768px) {
-           .section {
-             flex-direction: column;
-             text-align: center;
-           }
+      .content ul li {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 8px;
+      }
 
-           .section:nth-child(even) .content {
-             order: 0;
-           }
-         }
+      .cta-button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #004466;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+        margin: 60px auto;
+        text-align: center;
+        width: fit-content;
+      }
 
-         .footer {
-           background-color: #004466;
-           color: white;
-           text-align: center;
-           padding: 20px;
-         }
+      .cta-button:hover {
+        background-color: #0056b3;
+      }
 
-         .footer-content h2 {
-           margin: 0;
-           font-size: 22px;
-           color: white;
-         }
+      /* Footer */
+      .footer {
+        background-color: #004466;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
 
-         .footer-content p {
-           margin: 5px 0;
-           font-size: 14px;
-         }
+      .footer-content h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: white;
+      }
 
-         .footer-nav {
-           margin-top: 10px;
-         }
+      .footer-content p {
+        margin: 5px 0;
+        font-size: 0.875rem;
+      }
 
-         .footer-nav a {
-           color: white;
-           text-decoration: none;
-           margin: 0 10px;
-           font-size: 14px;
-         }
+      .footer-nav {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
 
-         .footer-nav a:hover {
-           text-decoration: underline;
-         }
-         .content ul li {
-           font-size: 18px;
-           line-height: 1.6;
-         }
-      ]
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      /* Desktop Styles */
+      @media (min-width: 768px) {
+        .section {
+          flex-direction: row;
+          align-items: center;
+          text-align: left;
+        }
+
+        .section:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+
+        .content {
+          width: 50%;
+        }
+
+        .section img {
+          width: 45%;
+        }
+
+        .logo img {
+          height: 70px;
+        }
+
+        .logo-container h1 {
+          font-size: 1.75rem;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+
+        .nav-links li a {
+          font-size: 1.125rem;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        p,
+        .content ul li {
+          font-size: 1.125rem;
+        }
+      }
+
+      /* Mobile menu toggle */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 767px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 15px;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
     </style>
   </head>
   <body>
