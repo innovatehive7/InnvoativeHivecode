@@ -451,6 +451,7 @@
             : '<i class="fas fa-bars"></i>';
         });
 
+        // Close menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach((link) => {
           link.addEventListener("click", function () {
             navLinks.classList.remove("active");
@@ -533,37 +534,60 @@
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector(".contact-form");
-        const formMessage = document.getElementById("formMessage");
-        let submitted = false;
+        const contactForm = document.getElementById("contactForm");
 
-        form.addEventListener("submit", function () {
+        contactForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
           const submitBtn = this.querySelector('button[type="submit"]');
+          const formMessage = document.getElementById("formMessage");
+
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
           formMessage.innerHTML = "";
-        });
 
-        document
-          .getElementById("hidden_iframe")
-          .addEventListener("load", function () {
-            if (submitted) {
+          try {
+            const formData = {
+              name: this.name.value,
+              email: this.email.value,
+              phone: this.phone.value,
+              service: this.service.value,
+              goal: this.goal.value,
+              budget: this.budget.value,
+              message: this.message.value,
+            };
+
+            const response = await fetch("/api/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (result.status === "success") {
               formMessage.innerHTML = `
-              <div class="alert alert-success">
-                Submitted
-              </div>`;
-              form.reset();
-              const submitBtn = form.querySelector('button[type="submit"]');
-              submitBtn.disabled = false;
-              submitBtn.innerHTML =
-                '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-              submitted = false;
+                <div class="alert alert-success">
+                  ${result.message}
+                </div>`;
+              this.reset();
+            } else {
+              throw new Error(result.message || "Failed to send message");
             }
-          });
-
-        form.onsubmit = function () {
-          submitted = true;
-        };
+          } catch (error) {
+            console.error("Error:", error);
+            formMessage.innerHTML = `
+              <div class="alert alert-error">
+                Error: ${error.message || "An unexpected error occurred"}
+              </div>`;
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML =
+              '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+          }
+        });
       });
     </script>
     <!-- Google Analytics -->
@@ -578,6 +602,51 @@
       }
       gtag("js", new Date());
       gtag("config", "G-XXXXXXXXXX");
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".contact-form");
+        const formMessage = document.getElementById("formMessage");
+        let submitted = false; // Flag to track submission
+
+        form.addEventListener("submit", function (e) {
+          // Don't prevent default since we want Google Forms submission to work
+          const submitBtn = this.querySelector('button[type="submit"]');
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+          formMessage.innerHTML = "";
+        });
+
+        // Handle the hidden iframe load to detect successful submission
+        document
+          .getElementById("hidden_iframe")
+          .addEventListener("load", function () {
+            if (submitted) {
+              formMessage.innerHTML = `
+              <div class="alert alert-success">
+                Submitted
+              </div>`;
+
+              // Reset form
+              form.reset();
+
+              // Reset button
+              const submitBtn = form.querySelector('button[type="submit"]');
+              submitBtn.disabled = false;
+              submitBtn.innerHTML =
+                '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+
+              // Reset submitted flag
+              submitted = false;
+            }
+          });
+
+        // Set submitted flag when form is submitted
+        form.onsubmit = function () {
+          submitted = true;
+        };
+      });
     </script>
   </body>
 </html>
