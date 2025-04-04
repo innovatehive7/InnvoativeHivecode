@@ -297,13 +297,19 @@
             </p>
           </div>
 
-          <form id="contactForm" class="contact-form">
+          <!-- Google Form Connected -->
+          <form
+            action="https://docs.google.com/forms/d/1rRrzQbLud9FfPKTgzCXSM-9SOPFuE4isHWkqTZ7SaHg/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="submitted=true;"
+            class="contact-form"
+          >
             <div class="form-row">
               <div class="form-group">
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  name="entry.2005620554"
                   placeholder="Your Name"
                   required
                   class="font-open-sans"
@@ -312,8 +318,7 @@
               <div class="form-group">
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  name="entry.1045781291"
                   placeholder="Your Email"
                   required
                   class="font-open-sans"
@@ -325,29 +330,27 @@
               <div class="form-group">
                 <input
                   type="tel"
-                  id="phone"
-                  name="phone"
+                  name="entry.1166974658"
                   placeholder="Phone Number"
                   class="font-open-sans"
                 />
               </div>
               <div class="form-group">
-                <select id="service" name="service" class="font-open-sans">
+                <select name="entry.839337160" class="font-open-sans" required>
                   <option value="" disabled selected>Select a Service</option>
-                  <option value="web-design">Website Design</option>
-                  <option value="graphic-design">Graphic Design</option>
-                  <option value="video-editing">Video Editing</option>
-                  <option value="seo">SEO Services</option>
-                  <option value="ai">AI Services</option>
-                  <option value="other">Other</option>
+                  <option value="Website Design">Website Design</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="SEO Services">SEO Services</option>
+                  <option value="AI Services">AI Services</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
               <textarea
-                id="goal"
-                name="goal"
+                name="entry.671065043"
                 rows="3"
                 placeholder="Your Project Goals"
                 class="font-open-sans"
@@ -356,8 +359,7 @@
 
             <div class="form-group">
               <input
-                id="budget"
-                name="budget"
+                name="entry.1223232703"
                 class="font-open-sans"
                 placeholder="Budget"
               />
@@ -365,8 +367,7 @@
 
             <div class="form-group">
               <textarea
-                id="message"
-                name="message"
+                name="entry.83890540"
                 rows="5"
                 placeholder="Your Message"
                 required
@@ -379,6 +380,13 @@
               <i class="fas fa-paper-plane"></i>
             </button>
           </form>
+
+          <!-- Invisible iframe to avoid redirect -->
+          <iframe
+            name="hidden_iframe"
+            id="hidden_iframe"
+            style="display: none"
+          ></iframe>
 
           <div id="formMessage" class="flash-messages"></div>
 
@@ -443,7 +451,6 @@
             : '<i class="fas fa-bars"></i>';
         });
 
-        // Close menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach((link) => {
           link.addEventListener("click", function () {
             navLinks.classList.remove("active");
@@ -526,60 +533,37 @@
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const contactForm = document.getElementById("contactForm");
+        const form = document.querySelector(".contact-form");
+        const formMessage = document.getElementById("formMessage");
+        let submitted = false;
 
-        contactForm.addEventListener("submit", async function (e) {
-          e.preventDefault();
-
+        form.addEventListener("submit", function () {
           const submitBtn = this.querySelector('button[type="submit"]');
-          const formMessage = document.getElementById("formMessage");
-
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
           formMessage.innerHTML = "";
-
-          try {
-            const formData = {
-              name: this.name.value,
-              email: this.email.value,
-              phone: this.phone.value,
-              service: this.service.value,
-              goal: this.goal.value,
-              budget: this.budget.value,
-              message: this.message.value,
-            };
-
-            const response = await fetch("/api/contact", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData),
-            });
-
-            const result = await response.json();
-
-            if (result.status === "success") {
-              formMessage.innerHTML = `
-                <div class="alert alert-success">
-                  ${result.message}
-                </div>`;
-              this.reset();
-            } else {
-              throw new Error(result.message || "Failed to send message");
-            }
-          } catch (error) {
-            console.error("Error:", error);
-            formMessage.innerHTML = `
-              <div class="alert alert-error">
-                Error: ${error.message || "An unexpected error occurred"}
-              </div>`;
-          } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML =
-              '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-          }
         });
+
+        document
+          .getElementById("hidden_iframe")
+          .addEventListener("load", function () {
+            if (submitted) {
+              formMessage.innerHTML = `
+              <div class="alert alert-success">
+                Submitted
+              </div>`;
+              form.reset();
+              const submitBtn = form.querySelector('button[type="submit"]');
+              submitBtn.disabled = false;
+              submitBtn.innerHTML =
+                '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+              submitted = false;
+            }
+          });
+
+        form.onsubmit = function () {
+          submitted = true;
+        };
       });
     </script>
     <!-- Google Analytics -->
