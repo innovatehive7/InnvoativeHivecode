@@ -151,60 +151,101 @@ def submit_to_google_form():
 @app.route('/sitemap.xml')
 def sitemap():
     return Response(render_template('sitemap.xml'), mimetype='application/xml')
-#robots.txt route
+
+# robots.txt route
 @app.route('/robots.txt')
 def robots():
     return Response(render_template('robots.txt'), mimetype='text/plain')
 
-# Additional Routes
+# Service Pages
 @app.route('/website')
-def website(): return render_template('website.html')
+def website():
+    return render_template('website.html')
 
 @app.route('/graphic')
-def graphic(): return render_template('graphic.html')
+def graphic():
+    return render_template('graphic.html')
 
 @app.route('/video_editing')
-def video_editing(): return render_template('video_editing.html')
+def video_editing():
+    return render_template('Video_Editing.html')
 
 @app.route('/content')
-def content(): return render_template('content.html')
+def content():
+    return render_template('content.html')
 
 @app.route('/seo')
-def seo(): return render_template('seo.html')
+def seo():
+    return render_template('seo.html')
 
 @app.route('/business_analysis')
-def business_analysis(): return render_template('business_analysis.html')
+def business_analysis():
+    return render_template('Business_Analysis.html')
 
 @app.route('/app')
-def app_design(): return render_template('app.html')
+def app_design():
+    return render_template('app.html')
 
 @app.route('/cloud')
-def cloud(): return render_template('cloud.html')
+def cloud():
+    return render_template('cloud.html')
 
 @app.route('/ai_assistant_development')
-def ai_assistant(): return render_template('ai_assistant_development.html')
+def ai_assistant():
+    return render_template('AI_Assistant_Development.html')
 
+# Blog Pages
 @app.route('/all_blogs')
-def all_blogs(): return render_template('all_blogs.html')
+def all_blogs():
+    return render_template('all_blogs.html')
 
 @app.route('/anurag')
-def anurag(): return render_template('anurag.html')
+def anurag():
+    return render_template('anurag.html')
 
 @app.route('/dhanashri')
-def dhanashri(): return render_template('dhanashri.html')
+def dhanashri():
+    return render_template('dhanashri.html')
 
 @app.route('/gurbani')
-def gurbani(): return render_template('gurbani.html')
+def gurbani():
+    return render_template('gurbani.html')
 
 @app.route('/om_gws')
-def om_gws(): return render_template('om_gws.html')
+def om_gws():
+    return render_template('om_gws.html')
+
+@app.route('/om_shau')
+def om_shau():
+    return render_template('om_shau.html')
+
+@app.route('/ajinka')
+def ajinka():
+    return render_template('ajinka.html')
+
+@app.route('/sharv')
+def sharv():
+    return render_template('sharv.html')
 
 @app.route('/siddhi')
-def siddhi(): return render_template('siddhi.html')
+def siddhi():
+    return render_template('siddhi.html')
+
+@app.route('/nuper')
+def nuper():
+    return render_template('nuper.html')
+
+@app.route('/sahil')
+def sahil():
+    return render_template('sahil.html')
+
+@app.route('/om')
+def om():
+    return render_template('om.html')
 
 @app.route('/anuja')
-def anuja(): return render_template('anuja.html')
+def anuja():
+    return render_template('anuja.html')
 
-# Run Flask App
 if __name__ == '__main__':
     app.run(debug=True)
