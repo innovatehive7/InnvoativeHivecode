@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Response
 from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
@@ -30,7 +30,6 @@ mail = Mail(app)
 
 # Google Sheets integration
 def get_google_sheet():
-    """Connects to Google Sheets and returns the sheet object."""
     try:
         creds_json = json.loads(os.getenv('GOOGLE_CREDENTIALS'))
         required_keys = ['type', 'project_id', 'private_key', 'client_email']
@@ -68,7 +67,6 @@ def index():
 
 @app.route('/api/contact', methods=['POST'])
 def handle_contact():
-    """Handles contact form submissions."""
     try:
         data = request.get_json()
         if not data.get('name') or not data.get('email') or not data.get('message'):
@@ -83,7 +81,6 @@ def handle_contact():
         budget = data.get('budget', '').strip()
         message = data.get('message', '').strip()
 
-        # Save to Google Sheets
         sheet = get_google_sheet()
         if not sheet:
             raise Exception("Could not access Google Sheets")
@@ -94,7 +91,6 @@ def handle_contact():
         ])
         logging.info("Data written to Google Sheets successfully.")
 
-        # Send email notification
         try:
             msg = Message(
                 "New Contact Form Submission - InnovateHive",
@@ -127,7 +123,6 @@ GOOGLE_FORM_URL = "https://docs.google.com/forms/d/1rRrzQbLud9FfPKTgzCXSM-9SOPFu
 
 @app.route('/submit-form', methods=['POST'])
 def submit_to_google_form():
-    """Submits data to Google Forms."""
     try:
         data = request.get_json()
         form_data = {
@@ -151,6 +146,11 @@ def submit_to_google_form():
     except Exception as e:
         logging.error(f"Error submitting form: {e}")
         return jsonify({"status": "error", "message": "An error occurred"}), 500
+
+# Sitemap route
+@app.route('/sitemap.xml')
+def sitemap():
+    return Response(render_template('sitemap.xml'), mimetype='application/xml')
 
 # Additional Routes
 @app.route('/website')
