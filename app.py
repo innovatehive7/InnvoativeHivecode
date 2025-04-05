@@ -151,6 +151,10 @@ def submit_to_google_form():
 @app.route('/sitemap.xml')
 def sitemap():
     return Response(render_template('sitemap.xml'), mimetype='application/xml')
+#robots.txt route
+@app.route('/robots.txt')
+def robots():
+    return Response(render_template('robots.txt'), mimetype='text/plain')
 
 # Additional Routes
 @app.route('/website')
