@@ -853,7 +853,7 @@ h1 {
   transform: translateY(30px);
   animation: slideInUp 0.8s ease-out forwards;
   width: 100%;
-  margin-left: 30px;
+  margin-left:28px;
 }
 }
 
